@@ -1,0 +1,108 @@
+// @import "path/to/hamburgers";
+
+$themeGreen: #215732;
+$windowWidth: 1470px;
+$windowHeight: 809px;
+
+._themeBg {
+    background-color: #215732;
+}
+
+._themeTxt {
+    color: #215732;
+}
+
+._centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+._font {
+    font-family: myRationalBold;
+}
+
+._font2 {
+    font-family: myRational;
+    font-size: 0.9rem;
+    // font-weight: bold;
+}
+
+._font1 {
+    font-family: myOptima;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: myRationalBold;
+    src: url("../public/rational_semibold.otf");
+}
+
+@font-face {
+    font-family: myRational;
+    src: url("../public/rational.otf");
+}
+
+@font-face {
+    font-family: myOptima;
+    src: url("../public/OPTIMA.ttf");
+}
+
+@mixin centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin red {
+    border: 1px solid red;
+}
+
+@mixin txt-up {
+    animation: ani-txt-up 800ms forwards, ani-txt-fade 1000ms forwards;
+}
+
+@keyframes ani-txt-fade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes ani-txt-up {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateY(-160px);
+    }
+}
+// cubic-bezier(.14,.74,.78,.29)
+
+@mixin img-up {
+    animation: ani-img-up 900ms forwards cubic-bezier(0.14, 0.74, 0.78, 0.29);
+}
+
+@mixin img-down {
+    animation: ani-img-down 900ms forwards cubic-bezier(0.14, 0.74, 0.78, 0.29);
+}
+
+@keyframes ani-img-up {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-$windowHeight);
+    }
+}
+
+@keyframes ani-img-down {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-$windowWidth);
+    }
+}

@@ -1,0 +1,12 @@
+.fullLayout {
+    width: 100vw;
+    height: 100vh;
+}
+
+.topNav {
+    grid-row: 1;
+}
+
+.footer {
+    grid-row: -2;
+}
