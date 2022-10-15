@@ -8,7 +8,7 @@ const FootMsg = () => {
                     position: "relative",
                     bottom: "40px",
                     fontSize: "0.9rem",
-                    border: "1px",
+                    // border: "1px",
                 }}
             >
                 Scroll to discover

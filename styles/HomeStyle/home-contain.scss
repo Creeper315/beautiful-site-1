@@ -1,0 +1,11 @@
+@import "../variable.scss";
+@import "../Global/home-title.scss";
+
+#home-contain {
+    border: 2px dashed seagreen;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    @include home-title;
+    @include centering;
+}

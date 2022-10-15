@@ -4,7 +4,7 @@ const LeftMainBtn = () => {
     return (
         <div
             className="_themeBg position-absolute top-50 start-0 translate-middle-y rounded-end _centering"
-            style={{ width: "180px", height: "100px" }}
+            style={{ width: "180px", height: "100px", zIndex: 2 }}
         >
             {/* <div style={{ width: "80%" }} className=" _centering"> */}
             <svg

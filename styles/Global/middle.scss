@@ -1,11 +1,14 @@
 @import "../variable.scss";
+@import "./home-title.scss";
+@import "../HomeStyle/home-contain.scss";
 
 $ratio: $windowWidth / $windowHeight;
 
 #index-contain {
     height: 100%;
-    // position: relative;
-    border: 2px dashed lightcoral;
+    position: relative;
+    z-index: 0;
+    // border: 2px dashed lightcoral;
     margin: 0 90px;
     min-height: 0;
     background-image: url(../../public/img/bg-pattern.png);
@@ -16,7 +19,8 @@ $ratio: $windowWidth / $windowHeight;
         width: 100vw;
         height: 100vh;
         position: absolute;
-        overflow: scroll;
+        overflow: hidden;
+        @include centering;
     }
 
     .invisible-screen.based-width {

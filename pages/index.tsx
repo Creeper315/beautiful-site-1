@@ -1,57 +1,63 @@
 import { NextPage } from "next";
-import styles from "../styles/Home.module.css";
 // import Comp1 from "../Component/comp1";
 import FootMsg from "../Component/MiddleContent/footMsg";
 import Home1 from "../Component/MiddleContent/Home/home1";
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useCallback, useState, memo } from "react";
+import HomeContain from "../Component/MiddleContent/Home/homeContain";
+import UseViewportSize from "../Component/myViewportSize";
+
+// import Test from "../Component/TransitionSection/test";
 
 const Index: NextPage<{ hi: any }> = ({ hi }) => {
-    const div = useRef<HTMLDivElement>(null);
+    const invisibleDiv = useRef<any>(null);
+
+    // const viewport = useRef();
+
+    const [Vw, setVw] = useState(0);
+    const [Vh, setVh] = useState(0);
 
     // useEffect(() => {
-    //     if (div.current !== null) {
-    //         div.current.addEventListener("wheel", preventScroll);
+    //     if (invisibleDiv.current !== null) {
+    //         invisibleDiv.current.addEventListener("wheel", preventScroll);
     //         setTimeout(() => {
-    //             if (div.current) {
-    //                 div.current.scrollTop = 100;
+    //             if (invisibleDiv.current) {
+    //                 invisibleDiv.current.scrollTop = 100;
     //             }
     //         }, 1000);
     //     }
 
     //     // return () => {
-    //     //     div.current &&
-    //     //         div.current.removeEventListener("wheel", preventScroll);
+    //     //     invisibleDiv.current &&
+    //     //         invisibleDiv.current.removeEventListener("wheel", preventScroll);
     //     // };
     // }, [div]);
 
-    function preventScroll(e: any) {
-        e.preventDefault();
-        e.stopPropagation();
+    // function preventScroll(e: any) {
+    //     e.preventDefault();
+    //     e.stopPropagation();
 
-        return false;
-    }
+    //     return false;
+    // }
 
-    function getClass() {
-        const vw = Math.max(
-            document.documentElement.clientWidth || 0,
-            window.innerWidth || 0
-        );
-        const vh = Math.max(
-            document.documentElement.clientHeight || 0,
-            window.innerHeight || 0
-        );
+    function getClass(): string {
         const ratio = 1470 / 809;
-        if (vw > vh * ratio) return " based-width";
+        console.log("viewport.Width viewport.Height: ", Vw, Vh);
+
+        if (Vw > Vh * ratio) {
+            return " based-width";
+        }
         return " based-height";
     }
 
     return (
         <div id="index-contain">
             <div className="mid-line"></div>
-            <div className={`invisible-screen ${getClass()}`} ref={div}>
-                <Home1 />
-                <Home1 />
+            <div className={`invisible-screen${getClass()}`} ref={invisibleDiv}>
+                <HomeContain />
+                {/* <Home1 />
+                <Home1 /> */}
             </div>
+            <UseViewportSize {...{ Vw, setVw, Vh, setVh }} />
             <FootMsg />
         </div>
     );

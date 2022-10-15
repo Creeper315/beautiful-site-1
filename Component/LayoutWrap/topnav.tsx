@@ -6,8 +6,8 @@ const TopNav = () => {
     // font color
     return (
         <div
-            className={`d-flex justify-content-center align-item-center flex-shrink-0`}
-            style={{ height: "90px" }}
+            className={`position-relative d-flex justify-content-center align-item-center flex-shrink-0`}
+            style={{ height: "90px", zIndex: 1 }}
         >
             <div
                 className="border border-primary mx-5 _centering _font _themeTxt"

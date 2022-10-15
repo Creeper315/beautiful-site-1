@@ -12,7 +12,7 @@ const RightMainBtn = () => {
     return (
         <div
             className="_themeBg position-absolute top-50 end-0 translate-middle-y text-danger rounded-start"
-            style={{ width: "135px", height: "90px" }}
+            style={{ width: "135px", height: "90px", zIndex: 2 }}
         >
             <button
                 className={`hamburger hamburger--slider position-absolute bottom-0 start-50 translate-middle-x`}
