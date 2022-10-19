@@ -1,0 +1,35 @@
+@import "../variable.scss";
+
+#top-nav-bar {
+    position: relative;
+    z-index: 3;
+    height: 90px;
+    flex-shrink: 0;
+    @include centering;
+    gap: 18px;
+
+    .nav-item {
+        // @include red;
+        height: 75%;
+        padding: 0 18px;
+        white-space: nowrap;
+        display: table-cell;
+        cursor: pointer;
+        @include centering;
+
+        font-family: myRationalBold;
+        font-size: 14px;
+        color: $themeGreen;
+        transition: color 0.1s ease-out;
+        &:hover {
+            color: rgb(37, 124, 65);
+        }
+
+        border-radius: 8px;
+        box-shadow: 0 0 5px -4px;
+        user-select: none;
+    }
+    .nav-item.wait {
+        cursor: progress;
+    }
+}

@@ -1,11 +1,105 @@
 @import "../variable.scss";
-@import "../Global/home-title.scss";
+@import "./home-title.scss";
+@import "./progress-bar.scss";
+@import "./page1.scss";
+@import "./page2.scss";
 
-#home-contain {
-    border: 2px dashed seagreen;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    @include home-title;
-    @include centering;
+//cubic-bezier(0.23, 1, 0.32, 1)
+//cubic-bezier( 0.49, 0.01, 0.27, 1 )
+
+#index-contain {
+    .invisible-screen {
+        position: absolute;
+        z-index: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        @include centering;
+
+        #home-contain {
+            // border: 2px dashed seagreen;
+            z-index: 0;
+            position: relative;
+
+            overflow: hidden;
+            @include maxSize;
+            @include home-title;
+            @include progressBar;
+            @include centering;
+
+            .clip-contain,
+            .clip-top-contain,
+            .clip-bottom-contain,
+            .overflow-contain {
+                position: absolute;
+                @include maxSize;
+            }
+            .clip-top-contain {
+                // border: 2px dashed pink;
+                clip: rect(90px, $windowWidth, $windowHeight, 0);
+            }
+            .clip-bottom-contain {
+                // border: 2px dashed red;
+                clip: rect(0, $windowWidth, $windowHeight - 90px, 0);
+            }
+            .clip-contain {
+                // border: 2px dashed blue;
+                clip: rect(90px, $windowWidth, $windowHeight - 90px, 0);
+            }
+            [class^="page-sub"] {
+                z-index: 0;
+                position: relative;
+            }
+            @include page1;
+            @include page2;
+
+            img {
+                transition: all 0.9s ease;
+            }
+            .translate-minus5 {
+                transform: translateY(-5 * 100vh);
+            }
+            .translate-minus4 {
+                transform: translateY(-4 * 100vh);
+            }
+            .translate-minus3 {
+                transform: translateY(-3 * 100vh);
+            }
+            .translate-minus2 {
+                transform: translateY(-2 * 100vh);
+            }
+            .translate-minus1 {
+                transform: translateY(-1 * 100vh);
+            }
+            .translate-0 {
+                transform: translateY(0);
+            }
+            .translate-plus1 {
+                transform: translateY(1 * 100vh);
+            }
+            .translate-plus2 {
+                transform: translateY(2 * 100vh);
+            }
+            .translate-plus3 {
+                transform: translateY(3 * 100vh);
+            }
+            .translate-plus4 {
+                transform: translateY(4 * 100vh);
+            }
+            .translate-plus5 {
+                transform: translateY(5 * 100vh);
+            }
+        }
+    }
+
+    $ratio: $windowWidth / $windowHeight;
+    .invisible-screen.based-width {
+        width: 100vw;
+        height: 100vw / $ratio;
+    }
+
+    .invisible-screen.based-height {
+        height: 100vh;
+        width: 100vh * $ratio;
+    }
 }

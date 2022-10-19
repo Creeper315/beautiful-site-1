@@ -5,8 +5,8 @@ const AllTitle: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
     // Index 是 1 based
     // 需要依靠 Index 来计算 home-title-12345 的 className 是有 .up 还是 .down
 
-    function renderIdx() {
-        return <span>{`. 0${PageIdx} .`}</span>;
+    function renderIdx(idx: number | string) {
+        return <span className="label">{`. 0${idx} .`}</span>;
     }
     function addHomeTitleClass(curPage: number): string {
         // PageIdx 是当前 user 翻到了第几页。
@@ -18,7 +18,6 @@ const AllTitle: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
         if (PageIdx > curPage) result = `${curPage} up`; // 当前浏览页面在这一页下面
         if (PageIdx === curPage) result = `${curPage}`; // 当前正在浏览这一页
         if (PageIdx < curPage) result = `${curPage} down`; // 当前浏览页面在这一页上面
-        console.log("Cant get here");
         return "home-title" + result;
     }
 
@@ -30,7 +29,7 @@ const AllTitle: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
 
                 <div className="text-contain">
                     <div className="text">
-                        {renderIdx()}
+                        {renderIdx(2)}
                         <br />
                         100%
                         <br />
@@ -38,7 +37,8 @@ const AllTitle: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
                         <br />
                         <br />
                         certified by Soil Association
-                        <br />.
+                        <br />
+                        <span className="sm-diamond">⬩</span>
                     </div>
                 </div>
             </div>
@@ -47,12 +47,13 @@ const AllTitle: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
 
                 <div className="text-contain">
                     <div className="text">
-                        {renderIdx()}
+                        {renderIdx(3)}
                         <br />
                         cold
                         <br />
                         pressed
-                        <br />.
+                        <br />
+                        <span className="sm-diamond">⬩</span>
                     </div>
                 </div>
             </div>
@@ -60,12 +61,13 @@ const AllTitle: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
                 <div className="nothing"></div>
                 <div className="text-contain">
                     <div className="text">
-                        {renderIdx()}
+                        {renderIdx(4)}
                         <br />
                         Unpasteurised
                         <br />
                         No HPP
-                        <br />.
+                        <br />
+                        <span className="sm-diamond">⬩</span>
                     </div>
                 </div>
             </div>

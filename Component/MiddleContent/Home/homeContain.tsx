@@ -1,6 +1,8 @@
-import { type } from "os";
 import { useState, useRef, useEffect } from "react";
 import AllTitle from "./allTitle";
+import ProgressBar from "./progressBar";
+import { Overflow1 } from "./page1";
+import { Clip2, ClipTop2 } from "./page2";
 
 const HomeContain = () => {
     const [PageIdx, setPageIdx] = useState<number>(1); // 1 based. from 1 ~ 5;
@@ -15,19 +17,13 @@ const HomeContain = () => {
     }
 
     function flipPage(e: scroll): void {
-        // console.log(
-        //     `flip !!! ${PageIdx} ${typeof PageIdx} ${e == scroll.up} ${
-        //         e == scroll.down
-        //     } `
-        // );
-
         if (e == scroll.up) {
             if (PageIdx <= 1) return;
-            console.log(`flip from ${PageIdx} to ${PageIdx - 1}`);
+            // console.log(`flip from ${PageIdx} to ${PageIdx - 1}`);
             setPageIdx(PageIdx - 1);
         } else if (e == scroll.down) {
             if (PageIdx >= 5) return;
-            console.log(`flip from ${PageIdx} to ${PageIdx + 1}`);
+            // console.log(`flip from ${PageIdx} to ${PageIdx + 1}`);
             setPageIdx(PageIdx + 1);
         }
     }
@@ -47,7 +43,7 @@ const HomeContain = () => {
             return;
         }
         let diff = Math.abs(momentum) - Math.abs(prevMomentum.current);
-        console.log("diff: ", momentum, prevMomentum.current, diff);
+        // console.log("diff: ", momentum, prevMomentum.current, diff);
         if (diff <= 2) {
             // 速度在自然下降。无人为滑动
             prevMomentum.current = momentum;
@@ -55,15 +51,14 @@ const HomeContain = () => {
         }
         // 速度维持不变，或者在上升，说明是人为改变了速度。
         if (momentum == 0) {
-            console.log("cant get here");
             return;
         }
         if (momentum > 0) {
             flipPage(scroll.down);
-            console.log("detect scroll " + scroll.down);
+            // console.log("detect scroll " + scroll.down);
         } else if (momentum < 0) {
             flipPage(scroll.up);
-            console.log("detect scroll " + scroll.up);
+            // console.log("detect scroll " + scroll.up);
         }
         prevMomentum.current = null;
         // listenLater();
@@ -77,13 +72,17 @@ const HomeContain = () => {
     return (
         <div id="home-contain" ref={container} onWheelCapture={handleWheel}>
             <AllTitle {...{ PageIdx }} />
-            <div className="clip-contain"></div>
-            <div className="over-top-contain"></div>
-            <div className="over-bottom-contain"></div>
-            <div className="overflow-contain"></div>
-            <button onClick={() => console.log(PageIdx)} style={{ zIndex: 1 }}>
-                ??
-            </button>
+            <div className="clip-contain">
+                <Clip2 {...{ PageIdx }} />
+            </div>
+            <div className="clip-top-contain">
+                <ClipTop2 {...{ PageIdx }} />
+            </div>
+            <div className="clip-bottom-contain"></div>
+            <div className="overflow-contain">
+                {/* <Overflow1 {...{ PageIdx }} /> */}
+            </div>
+            <ProgressBar {...{ PageIdx }} />
         </div>
     );
 };

@@ -10,23 +10,27 @@ const bm = "https://koox.co.uk/assets/images/home/intro/balls-red-green.png";
 const rm = "https://koox.co.uk/assets/images/home/intro/red-ball.png";
 const rb1 = "https://koox.co.uk/assets/images/home/intro/spoon.png";
 const rb2 = "https://koox.co.uk/assets/images/home/intro/tomato.png";
+import { NextPage } from "next";
+import { getGroupClass } from "./helper";
 
-export const Page1Clip = () => {
-    return <></>;
+// page-sub1 up     //  page-sub1    //   page-sub1 down
+
+export const Clip1: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
+    return <div className={getGroupClass(1)}></div>;
 };
 
-export const Page1Top = () => {
-    return <></>;
+export const ClipTop1: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
+    return <div className={getGroupClass(1)}></div>;
 };
 
-export const Page1Bottom = () => {
-    return <></>;
+export const ClipBottom1: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
+    return <div className={getGroupClass(1)}></div>;
 };
 
-export const Page1Overflow = () => {
+export const Overflow1: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
     return (
-        <>
-            <img className={`lb1`} src={lb1} alt="img" />
+        <div className={getGroupClass(1)}>
+            <img className="lb1" src={lb1} alt="img" />
             <img className="lb2" src={lb2} alt="img" />
             <img className="lt1" src={lt1} alt="img" />
             <img className="lt2" src={lt2} alt="img" />
@@ -37,6 +41,6 @@ export const Page1Overflow = () => {
             <img className="rb2" src={rb2} alt="img" />
             <img className="lm" src={lm} alt="img" />
             <img className="rm" src={rm} alt="img" />
-        </>
+        </div>
     );
 };

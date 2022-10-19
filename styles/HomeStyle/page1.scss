@@ -1,0 +1,72 @@
+@import "../variable.scss";
+
+@mixin page1 {
+    .page-sub1 {
+        @include maxSize;
+        border: 2px dashed;
+
+        img {
+            position: absolute;
+        }
+        .lb1 {
+            width: 19.7%;
+            bottom: 8.65%;
+            left: 2.72%;
+        }
+        .lb2 {
+            width: 18.4%;
+            bottom: 9%;
+            left: 24.76%;
+        }
+        .lt1 {
+            width: 20.41%;
+            height: 32.14%;
+            top: 0.6%;
+            left: 10.5%;
+        }
+        .lt2 {
+            left: 36.46%;
+            top: 14.22%;
+            width: 8.5%;
+            height: 7.17%;
+            z-index: 1;
+        }
+        .rt1 {
+            right: 10.41%;
+            top: 10.51%;
+            height: 30.1%;
+            width: 12.925%;
+        }
+        .rt2 {
+            right: 29.6%;
+            top: 10.51%;
+            height: 21%;
+        }
+        .bm {
+            left: 45.7%;
+            bottom: 24.72%;
+            height: 7.4%;
+        }
+        .rb1 {
+            right: 1.09%;
+            bottom: -2.47%;
+            height: 39.5%;
+        }
+        .rm {
+            right: 19.45%;
+            bottom: 41.66%;
+            width: 5.44%;
+        }
+        .rb2 {
+            right: 40.3%;
+            bottom: 15.2%;
+            width: 5.58%;
+            height: 9.27%;
+        }
+        .lm {
+            left: 15.65%;
+            bottom: 42%;
+            width: 8.16%;
+        }
+    }
+}
