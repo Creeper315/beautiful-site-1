@@ -82,7 +82,7 @@ const HomeContain = () => {
             <div className="overflow-contain">
                 {/* <Overflow1 {...{ PageIdx }} /> */}
             </div>
-            <ProgressBar {...{ PageIdx }} />
+            <ProgressBar PageIdx={PageIdx} totalPageCount={5} />
         </div>
     );
 };

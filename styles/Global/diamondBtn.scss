@@ -1,0 +1,111 @@
+@import "../variable.scss";
+
+.diamond-btn {
+    position: relative;
+    z-index: 1;
+    @include centering;
+    transition: all 0.2s ease-out;
+
+    .hover-area {
+        position: absolute;
+        z-index: inherit;
+        width: 450%;
+        height: 450%;
+        // @include red;
+        border-radius: 40%;
+        // background-color: antiquewhite;
+        @include centering;
+
+        .selection-area {
+            z-index: inherit;
+            width: 52%;
+            height: 52%;
+            border-radius: 50%;
+            // border: 1px dashed brown;
+            cursor: pointer;
+        }
+    }
+    .outer1 {
+        width: 100%;
+        height: 100%;
+        @include centering;
+        // @include red;
+        transition: inherit;
+
+        .outer2 {
+            width: 100%;
+            height: 100%;
+            border: 2px solid $themeGreen;
+            transform: rotate(45deg);
+        }
+
+        .inner {
+            position: absolute;
+            @include centering;
+            width: 20px;
+            height: 20px;
+            // font-size: 300px;
+            color: $themeGreen;
+            // @include red;
+            transition: inherit;
+        }
+    }
+}
+.diamond-btn.hide {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+// .diamond-btn {
+//     border-radius: 20%;
+//     background-color: antiquewhite;
+//     cursor: pointer;
+//     transition: all 0.1s ease-out;
+
+//     .outer1 {
+//         transition: inherit;
+
+//         .outer2 {
+//             border: 2px solid $themeGreen;
+//             transform: rotate(45deg);
+//         }
+//     }
+//     .inner {
+//         @include centering;
+//         width: 20px;
+//         height: 20px;
+//         position: absolute;
+//         color: $themeGreen;
+//         @include red;
+//         transition: inherit;
+//     }
+// }
+
+// .diamond-btn {
+//     z-index: 1;
+//     @include centering;
+//     @include red;
+//     border-radius: 20%;
+//     background-color: antiquewhite;
+//     cursor: pointer;
+//     transition: all 0.1s ease-out;
+
+//     .outer1 {
+//         transition: inherit;
+
+//         .outer2 {
+//             border: 2px solid $themeGreen;
+//             transform: rotate(45deg);
+//         }
+//     }
+//     .inner {
+//         @include centering;
+//         width: 20px;
+//         height: 20px;
+//         position: absolute;
+//         color: $themeGreen;
+//         @include red;
+//         transition: inherit;
+//     }
+// }

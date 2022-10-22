@@ -6,12 +6,12 @@
     height: 90px;
     flex-shrink: 0;
     @include centering;
-    gap: 18px;
-
+    // gap: 18px;
+    gap: 0;
     .nav-item {
-        // @include red;
-        height: 75%;
-        padding: 0 18px;
+        z-index: 1;
+        height: 100%;
+        padding: 0 30px;
         white-space: nowrap;
         display: table-cell;
         cursor: pointer;
@@ -26,10 +26,18 @@
         }
 
         border-radius: 8px;
-        box-shadow: 0 0 5px -4px;
+        // box-shadow: 0 0 5px -4px;
         user-select: none;
     }
     .nav-item.wait {
         cursor: progress;
+    }
+
+    .underline {
+        background-color: $themeGreen;
+        transition: all 0.4s cubic-bezier(0.15, 0.99, 0.29, 1.01);
+        position: fixed;
+        height: 4px;
+        border-radius: 4px;
     }
 }

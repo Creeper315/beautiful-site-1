@@ -1,17 +1,31 @@
 import { useEffect, useRef, useContext, useLayoutEffect } from "react";
 import Logo from "./logo";
 import { ViewEnum, ViewConext } from "../OtherComponent/viewConext";
+import { menuContext } from "../OtherComponent/menuContext";
 
 const Transition = () => {
-    console.log("333");
     const { Load, CanChangeView, setCanChangeView, onChangeView } =
         useContext(ViewConext);
+    const { ShowBtn } = useContext(menuContext);
     const div = useRef<any>(null);
     const left = useRef<any>(null);
     const right = useRef<any>(null);
 
     let br = useRef<HTMLButtonElement>(null);
     const isInitLoad = useRef(true);
+
+    useEffect(() => {
+        if (ShowBtn == null) return;
+        if (ShowBtn == false) {
+            right.current.className = "pop0";
+            left.current.className = "pop0";
+            return;
+        }
+        if (ShowBtn == true) {
+            right.current.className = "pop2";
+            left.current.className = "pop2";
+        }
+    }, [ShowBtn]);
 
     function wait(milli_second?: number) {
         if (milli_second == undefined) milli_second = 1000;
@@ -67,8 +81,6 @@ const Transition = () => {
         if (isInitLoad.current) return;
         LoadAnimation();
     }, [Load]);
-
-    useLayoutEffect(() => {}, []);
 
     function toggleBtnLabel(hover: boolean | any = false) {
         if (hover) br.current?.classList.add("is-active");

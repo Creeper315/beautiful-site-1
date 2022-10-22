@@ -7,6 +7,7 @@ export enum ViewEnum {
     menu = "/menu",
     orderNow = "/orderNow",
     about = "/about",
+    contact = "/contact",
 }
 const ViewProvider: NextPage<any> = (props) => {
     // const [CurrentView, setCurrentView] = useState<ViewEnum>(ViewEnum.home);

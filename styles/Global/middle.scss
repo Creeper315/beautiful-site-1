@@ -2,10 +2,10 @@
 @import "../HomeStyle/home-title.scss";
 @import "../HomeStyle/home-contain.scss";
 @import "./top-nav.scss";
+@import "./diamondBtn.scss";
 
 // $ratio: $windowWidth / $windowHeight;
-
-#index-contain {
+#home-contain-contain {
     height: 100%;
     position: relative;
     z-index: 0;
@@ -15,25 +15,6 @@
     background-image: url(../../public/img/bg-pattern.png);
     background-color: rgb(243, 245, 239);
     @include centering;
-
-    // .invisible-screen {
-    //     position: absolute;
-    //     z-index: 0;
-    //     width: 100vw;
-    //     height: 100vh;
-    //     overflow: hidden;
-    //     @include centering;
-    // }
-
-    // .invisible-screen.based-width {
-    //     width: 100vw;
-    //     height: 100vw / $ratio;
-    // }
-
-    // .invisible-screen.based-height {
-    //     height: 100vh;
-    //     width: 100vh * $ratio;
-    // }
 
     .mid-line {
         height: 100%;
