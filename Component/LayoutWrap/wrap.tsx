@@ -11,7 +11,7 @@ import MenuProvider from "../OtherComponent/menuContext";
 const Wrap: NextPage<any> = ({ children }) => {
     return (
         <div
-            className={` d-flex flex-column overflow-hidden`}
+            className={`position-relative d-flex flex-column overflow-hidden`}
             style={{ height: "100vh", width: "100vw" }}
         >
             <MenuProvider>

@@ -19,3 +19,4 @@
 
 -   切换 view，如果是当前 path 的，就没反应。如果是不同的 path，就会出现 transition。并且 transition 的动画方向
 -   页面刷新时候，transition 会挡住 top-nav，其他时候，不会
+-   放大屏幕时候，scroll to view 会下滑而且消失。

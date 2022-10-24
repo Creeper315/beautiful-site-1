@@ -15,13 +15,15 @@
         height: 100vh;
         overflow: hidden;
         @include centering;
+        // border: 2px dashed seagreen;
 
         #home-contain {
-            // border: 2px dashed seagreen;
             z-index: 0;
             position: relative;
+            // border: 2px dashed rgb(92, 46, 139);
+            flex-shrink: 0;
 
-            overflow: hidden;
+            // overflow: hidden;
             @include maxSize;
             @include home-title;
             @include progressBar;

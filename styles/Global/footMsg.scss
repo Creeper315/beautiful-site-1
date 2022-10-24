@@ -1,0 +1,85 @@
+@import "../variable.scss";
+
+.foot-msg-contain {
+    position: fixed;
+    height: 0;
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    // @include centering;
+    color: $themeGreen;
+    display: flex;
+    justify-content: center;
+    .foot-msg {
+        position: absolute;
+        height: 90px;
+        bottom: 0px;
+        @include red;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .txt {
+            position: absolute;
+            bottom: calc(100% + 25px);
+            font-size: 0.9rem;
+            font-family: myOptima;
+        }
+        .dot {
+            width: 15px;
+            height: 15px;
+            margin-top: 26px;
+            margin-bottom: 10px;
+            font-size: 28px;
+            @include centering;
+        }
+    }
+    .foot-msg.hide {
+        transform: translateY(100px);
+        opacity: 0;
+        bottom: -80px;
+    }
+}
+
+////
+
+// .foot-msg-contain {
+//     position: fixed;
+//     height: 90px;
+//     left: 50%;
+//     bottom: 0;
+//     transform: translateX(-50%);
+//     white-space: nowrap;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     color: $themeGreen;
+//     @include red;
+
+//     transform: translateY(0);
+//     opacity: 1;
+
+//     transition: all 0.8s ease;
+
+//     .txt {
+//         position: absolute;
+//         bottom: calc(100% + 25px);
+//         font-size: 0.9rem;
+//         font-family: myOptima;
+//     }
+//     .dot {
+//         width: 15px;
+//         height: 15px;
+//         margin-top: 26px;
+//         margin-bottom: 10px;
+//         font-size: 28px;
+//         @include red;
+//         @include centering;
+//     }
+// }
+
+// .foot-msg.hide {
+//     transform: translateY(100px);
+//     opacity: 0;
+// }

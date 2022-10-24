@@ -24,8 +24,6 @@ const DiamondBtn: NextPage<any> = ({ Fun, show, Sty }) => {
             return;
         }
         let { x: x1, y: y1 } = parent.current.getBoundingClientRect();
-        // let x1 = parent.current.offsetLeft;
-        // let y1 = parent.current.offsetTop;
         let x2 = e.pageX;
         let y2 = e.pageY;
         let halfW = parent.current.clientWidth / 2;
@@ -79,33 +77,3 @@ const DiamondBtn: NextPage<any> = ({ Fun, show, Sty }) => {
 };
 
 export default DiamondBtn;
-
-// <div
-//     className="diamond-btn"
-//     ref={parent}
-//     onMouseMove={calculateXY}
-//     onMouseLeave={clearXY}
-//     style={{ width: `${totalSize}px`, height: `${totalSize}px` }}
-// >
-//     <div
-//         className="outer1"
-//         onClick={Fun}
-//         style={{
-//             transform: `translate(${OuterX}px,${OuterY}px)`,
-//         }}
-//     >
-//         <div
-//             className="outer2"
-//             style={{
-//                 width: `${size}px`,
-//                 height: `${size}px`,
-//             }}
-//         ></div>
-//     </div>
-//     <div
-//         className="inner"
-//         style={{ transform: `translate(${InnerX}px,${InnerY}px)` }}
-//     >
-//         <BiPlus />
-//     </div>
-// </div>

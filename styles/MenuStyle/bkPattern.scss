@@ -1,0 +1,14 @@
+@import "../variable.scss";
+
+@mixin bkPattern {
+    .bk-pattern {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-image: url(../../public/img/bg-pattern.png);
+        background-color: rgb(243, 245, 239);
+        // background-position: 0px 0px;
+
+        transition: background-position 3s ease;
+    }
+}

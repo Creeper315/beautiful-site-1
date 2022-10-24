@@ -13,7 +13,6 @@
         height: 450%;
         // @include red;
         border-radius: 40%;
-        // background-color: antiquewhite;
         @include centering;
 
         .selection-area {
@@ -56,56 +55,3 @@
     height: 0;
     opacity: 0;
 }
-
-// .diamond-btn {
-//     border-radius: 20%;
-//     background-color: antiquewhite;
-//     cursor: pointer;
-//     transition: all 0.1s ease-out;
-
-//     .outer1 {
-//         transition: inherit;
-
-//         .outer2 {
-//             border: 2px solid $themeGreen;
-//             transform: rotate(45deg);
-//         }
-//     }
-//     .inner {
-//         @include centering;
-//         width: 20px;
-//         height: 20px;
-//         position: absolute;
-//         color: $themeGreen;
-//         @include red;
-//         transition: inherit;
-//     }
-// }
-
-// .diamond-btn {
-//     z-index: 1;
-//     @include centering;
-//     @include red;
-//     border-radius: 20%;
-//     background-color: antiquewhite;
-//     cursor: pointer;
-//     transition: all 0.1s ease-out;
-
-//     .outer1 {
-//         transition: inherit;
-
-//         .outer2 {
-//             border: 2px solid $themeGreen;
-//             transform: rotate(45deg);
-//         }
-//     }
-//     .inner {
-//         @include centering;
-//         width: 20px;
-//         height: 20px;
-//         position: absolute;
-//         color: $themeGreen;
-//         @include red;
-//         transition: inherit;
-//     }
-// }

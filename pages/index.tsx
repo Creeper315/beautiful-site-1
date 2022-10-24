@@ -20,16 +20,14 @@ const Index: NextPage<{ hi: any }> = ({ hi }) => {
     }
 
     return (
-        <>
-            <div id="home-contain-contain">
-                <div className="mid-line"></div>
-                <div className={`invisible-screen${getClass()}`}>
-                    <HomeContain />;
-                </div>
-                <UseViewportSize {...{ Vw, setVw, Vh, setVh }} />
-                <FootMsg />
+        <div id="home-contain-contain">
+            <div className="mid-line"></div>
+            <div className={`invisible-screen${getClass()}`}>
+                <HomeContain />;
             </div>
-        </>
+            <UseViewportSize {...{ Vw, setVw, Vh, setVh }} />
+            <FootMsg />
+        </div>
     );
 };
 

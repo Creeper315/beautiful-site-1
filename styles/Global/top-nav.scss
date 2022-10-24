@@ -6,6 +6,8 @@
     height: 90px;
     flex-shrink: 0;
     @include centering;
+    @include red;
+    // background-color: white;
     // gap: 18px;
     gap: 0;
     .nav-item {

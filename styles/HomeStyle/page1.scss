@@ -3,7 +3,7 @@
 @mixin page1 {
     .page-sub1 {
         @include maxSize;
-        border: 2px dashed;
+        // border: 2px dashed;
 
         img {
             position: absolute;
