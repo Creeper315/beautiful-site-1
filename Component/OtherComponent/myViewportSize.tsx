@@ -3,8 +3,8 @@ import { NextPage } from "next";
 
 const UseViewportSize: NextPage<any, any> = ({ setVw, setVh }) => {
     function handleWindowResize() {
-        setVw(window.innerWidth);
-        setVh(window.innerHeight);
+        if (setVw != undefined) setVw(window.innerWidth);
+        if (setVh != undefined) setVh(window.innerHeight);
     }
 
     useEffect(() => {

@@ -2,7 +2,10 @@
 
 @mixin progressBar {
     .progress-bar {
-        position: relative;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         width: calc(100vw - 180px);
         height: calc(100vh - 180px);
         .bar {
@@ -14,20 +17,5 @@
             background-color: $themeGreen;
             transition: all 0.8s cubic-bezier(0.49, 0.01, 0.27, 1);
         }
-        // .bar.p1 {
-        //     width: 0%;
-        // }
-        // .bar.p2 {
-        //     width: 25%;
-        // }
-        // .bar.p3 {
-        //     width: 50%;
-        // }
-        // .bar.p4 {
-        //     width: 75%;
-        // }
-        // .bar.p5 {
-        //     width: 100%;
-        // }
     }
 }
