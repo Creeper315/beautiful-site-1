@@ -2,17 +2,22 @@ import DiamondBtn from "../../OtherComponent/diamondBtn";
 import { NextPage } from "next";
 
 const OneMenu: NextPage<any> = ({
-    getClass1,
+    // getClass1,
     Expand,
+    shouldExpand,
     expandMenu,
     pattern1,
     img,
     btn2Sty,
     shrinkMenu,
 }) => {
+    function getClass1() {
+        if (shouldExpand()) return " expand";
+        return "";
+    }
     return (
         <div className="one-menu">
-            <div className="bg-img">
+            <div className={`bg-img ${getClass1()}`}>
                 <img src={pattern1} alt="img" className="pattern" />
                 <img src={img} alt="img" className="bottle" />
             </div>
@@ -22,7 +27,7 @@ const OneMenu: NextPage<any> = ({
                     <div className="text-1">cold-pressed</div>
                     <div className="text-2">Ultimate Detox</div>
                     <div className="text-money">$7.95</div>
-                    <DiamondBtn Fun={expandMenu} show={!Expand} />
+                    <DiamondBtn Fun={expandMenu} show={!shouldExpand()} />
                 </div>
 
                 <div className={`description-contain ${getClass1()}`}>
@@ -45,9 +50,10 @@ const OneMenu: NextPage<any> = ({
                     </div>
                 </div>
             </div>
-            <DiamondBtn Sty={btn2Sty} Fun={shrinkMenu} show={Expand} />
+            <DiamondBtn Sty={btn2Sty} Fun={shrinkMenu} show={shouldExpand()} />
         </div>
     );
+    2;
 };
 
 export default OneMenu;

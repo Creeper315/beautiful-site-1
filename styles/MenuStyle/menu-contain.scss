@@ -43,7 +43,7 @@
             position: relative;
             width: 100%;
             // height: 200vh;
-            transition: all 1.2s ease;
+            transition: all 0.6s ease;
             border: 3px dashed brown;
 
             // transform: translateY(-400px);
@@ -70,16 +70,6 @@
         .description-contain.expand {
             margin-top: max(120px, 30%);
             opacity: 1;
-        }
-        .bg-img {
-            .bottle {
-                right: 35.4%;
-                height: 75.5%;
-            }
-            .pattern {
-                right: 37.2%;
-                height: 96%;
-            }
         }
     }
 }

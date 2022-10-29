@@ -1,10 +1,10 @@
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext, useEffect, useRef, useMemo } from "react";
 import { menuContext } from "../../OtherComponent/menuContext";
 import { ViewConext } from "../../OtherComponent/viewConext";
 import ProgressBar from "../Home/progressBar";
 import DragBar from "./dragBar";
 import ViewPortSize from "../../OtherComponent/myViewportSize";
-import BkPattern, { scrollMode } from "./bkPattern";
+import BkPattern, { ScrollMode } from "./bkPattern";
 import OneMenu from "./oneMenu";
 import WheelHandler, { scrollType } from "../../OtherComponent/wheelHandler";
 
@@ -26,14 +26,28 @@ const MenuContain = () => {
     const { setShowBtn } = useContext(menuContext);
     const { setCanChangeView } = useContext(ViewConext);
     const [Expand, setExpand] = useState<boolean>(false);
-    const [Above, setAbove] = useState(false);
+    const [Above, setAbove] = useState<boolean>(false);
+    // const Dragging = useRef(false);
+    // const [Dragging, setDragging] = useState<boolean>(false);
     const [PageIdx, setPageIdx] = useState<number>(1); // One based
     const [ScrollPercent, setScrollPercent] = useState(0); // number between 0 ~ 1
-    const [Mode, setMode] = useState<scrollMode>(scrollMode.ByPage);
+    const [Mode, setMode] = useState<ScrollMode>(ScrollMode.scroll);
     const [AllData, setAllData] = useState<{}[]>([]);
 
-    const pageCount = 20;
-    const onePagePx = Math.round(pageCount * Vh);
+    const totalPageCount = 20;
+    const styleTopTransTotalPx = useMemo(() => {
+        return Math.round((totalPageCount - 1) * Vh);
+    }, [Vh]);
+
+    function shouldExpand() {
+        // 因为点击 加号，屏幕虽然扩大了，但是如果拖动 drag bar，布局还是会显示缩小版本。
+        //  返回 True 如果 menu items 需要显示 扩张了的 布局.
+        if (!Expand) return false;
+        if (Expand) {
+            if (Mode == ScrollMode.drag) return false;
+            return true;
+        }
+    }
 
     function getClass1() {
         if (Expand) return "expand";
@@ -58,13 +72,8 @@ const MenuContain = () => {
             setAbove(false);
         }, 1000);
     }
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setPageIdx(2);
-    //     }, 3000);
-    // }, []);
 
-    function flipPage(e: scrollType, from = 1, to = 20): void {
+    function flipPage(e: scrollType, from = 1, to = totalPageCount): void {
         if (e == scrollType.up) {
             if (PageIdx <= from) return;
             // console.log(`flip from ${PageIdx} to ${PageIdx - 1}`);
@@ -77,29 +86,50 @@ const MenuContain = () => {
     }
 
     function getContain4Sty() {
-        if (Vh == 0) return { transform: "translateY(0)" };
-        let toPx = -(PageIdx - 1) * Vh;
-        return { transform: `translateY(${toPx}px)` };
+        if (Vh == 0 || styleTopTransTotalPx == undefined)
+            return { transform: "translateY(0)" };
+        if (Mode == ScrollMode.scroll) {
+            let toPx = -(PageIdx - 1) * Vh;
+            return { transform: `translateY(${toPx}px)` };
+        }
+        if (Mode == ScrollMode.drag) {
+            let styleTopTransTotalPx = (totalPageCount - 1) * Vh;
+            let toPx = -styleTopTransTotalPx * ScrollPercent; // 因为只有 19 个页面的长度是 scrollable
+            return { transform: `translateY(${toPx}px)` };
+        }
+        console.log("Err. cannnot get here");
     }
-
     return (
         <>
             <div id="menu-contain-1" className={getClass2()}>
                 {/* <div className="mid-line"></div> */}
+
                 <div className="overflow-contain">
-                    <DragBar Expand={Expand} />
+                    <DragBar
+                        {...{
+                            Mode,
+                            setMode,
+                            PageIdx,
+                            setPageIdx,
+                            ScrollPercent,
+                            setScrollPercent,
+                            totalPageCount,
+                            Expand,
+                            // Dragging,
+                        }}
+                    />
                 </div>
                 <div id="menu-contain-2" className={getClass1()}>
                     <BkPattern
                         ref={bkRef}
-                        {...{ PageIdx, ScrollPercent, Mode, pageCount }}
+                        {...{ PageIdx, ScrollPercent, Mode, totalPageCount }}
                     />
 
                     <div className="menu-contain-3">
                         {/* /// */}
                         <ProgressBar
                             PageIdx={PageIdx}
-                            totalPageCount={pageCount}
+                            totalPageCount={totalPageCount}
                             Show={!Above}
                         />
                         <div
@@ -109,7 +139,7 @@ const MenuContain = () => {
                             <OneMenu
                                 {...{
                                     Expand,
-                                    getClass1,
+                                    shouldExpand,
                                     expandMenu,
                                     shrinkMenu,
                                     pattern1,
@@ -120,7 +150,7 @@ const MenuContain = () => {
                             <OneMenu
                                 {...{
                                     Expand,
-                                    getClass1,
+                                    shouldExpand,
                                     expandMenu,
                                     shrinkMenu,
                                     pattern2,
