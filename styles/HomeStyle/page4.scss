@@ -1,0 +1,98 @@
+@import "../variable.scss";
+
+@mixin page4 {
+    .page-sub4 {
+        @include maxSize;
+
+        transition: perspective-origin 0.5s cubic-bezier(0.23, 1, 0.32, 1); // 这一行是用在 perspective-origin 上的
+        perspective: 100vh;
+        perspective-origin: calc(80% - var(--percentX, 50%))
+            calc(80% - var(--percentY, 50%));
+
+        img {
+            position: absolute;
+            // transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .knife {
+            height: 77%;
+            left: 33%;
+            top: -1.9%;
+            transform: translateZ(-26px);
+        }
+        // middle
+        .bk {
+            z-index: 0;
+            width: 65%;
+            left: 5.7%;
+            top: -15.3%;
+            // border: 1px dashed red;
+            transform: translateZ(-90px);
+        }
+        .ground {
+            z-index: 1;
+            width: 48%;
+            top: 31.9%;
+            left: 18%;
+            // border: 1px dashed red;
+
+            transform: translateZ(-15px) rotateX(43deg) scale(1, 0.25); // 这里的 scale 是灵魂
+        }
+        .tomato1 {
+            z-index: 4;
+            width: 12.2%;
+            left: 20.8%;
+            top: 52.8%;
+            transform: translateZ(-37px);
+        }
+        .tomato2 {
+            z-index: 3;
+            width: 11.4%;
+            left: 28.8%;
+            top: 54.2%;
+            transform: translateZ(-40px);
+        }
+        .leaf1 {
+            z-index: 2;
+            width: 5%;
+            left: 28.3%;
+            top: 37.8%;
+            transform: translateZ(-43px);
+        }
+        .leaf2 {
+            z-index: 4;
+            width: 6.9%;
+            left: 38.2%;
+            top: 44.1%;
+            transform: translateZ(-35px);
+        }
+        .tomato3 {
+            z-index: 1;
+            width: 13.6%;
+            left: 36.6%;
+            top: 52.7%;
+            transform: scale(0.97, 1) translateZ(-18px);
+        }
+        .leaf3 {
+            z-index: 0;
+            width: 8%;
+            left: 46.5%;
+            top: 42.5%;
+            transform: scale(1.1, 0.7) translateZ(-22px);
+        }
+        // lower
+        .leaf4 {
+            z-index: 1;
+            width: 8%;
+            left: 31%;
+            top: 71.9%;
+            transform: translateZ(23px);
+        }
+        .tomato4 {
+            z-index: 0;
+            width: 20%;
+            left: 40%;
+            top: 69.5%;
+            transform: translateZ(17px);
+        }
+    }
+}

@@ -1,37 +1,115 @@
 @import "../variable.scss";
 
+//    transition: transform 2.2s 0.1s cubic-bezier(0.23, 1, 0.32, 1);
+//     transition: transform 1.2s cubic-bezier(0.49, 0.01, 0.27, 1);
+
 @mixin page2 {
     .page-sub2 {
-        @include maxSize;
+        @include maxSize; // 是全屏
         // border: 2px dashed;
+
+        transition: perspective-origin 0.7s cubic-bezier(0.23, 1, 0.32, 1); // 这一行是用在 perspective-origin 上的
+        perspective: 100vh;
+        perspective-origin: calc(0% - var(--percentX))
+            calc(0% - var(--percentY)); // 注意，这里的 0% - var 其实是错误的 perspective origin，
+        // 但是我已经把图片摆好了，虽然错，但是就不改了。page-sub3 的 origin 计算方法是对的
+
         img {
             position: absolute;
         }
         .apple {
+            transform: translateZ(-12px);
+
+            z-index: 2;
             width: 17.5%;
-            height: 50%;
-            left: 27%;
-            top: 11%;
-        }
-        .hand {
-            width: 28%;
-            bottom: -10%;
-            left: 23%;
+            left: 28.4%;
+            top: 33.3%;
         }
         .aLeaf {
-            width: 7.5%;
-            left: 34.5%;
-            top: 31%;
-
-            transition: transform 1.2s cubic-bezier(0.49, 0.01, 0.27, 1);
+            z-index: 1;
+            width: 17.5%;
+            left: 27.7%;
+            top: 13.4%;
+            transform: translateZ(-12px);
         }
-        .leaf9 {
+        .aLeaf2 {
+            z-index: 3;
+            width: 7%;
+            height: 12%;
+            left: 35.7%;
+            top: 33.2%;
+            transform: translateZ(-9px) rotateX(2.7deg) rotateY(-1.8deg)
+                rotate(-7deg);
+        }
+        .bk {
+            z-index: 0;
+            width: 46%;
+            left: 14%;
+            top: 21%;
+            transform: translateZ(-38px);
+        }
+        .hand {
+            z-index: 0;
+            width: 28%;
+            bottom: -11%;
+            left: 24%;
+            transform: translateZ(-4px);
+        }
+        .leaf1 {
+            z-index: 4;
+            width: 3.4%;
+            left: 30%;
+            top: 12%;
+            transform: translateZ(-5px);
+        }
+        .leaf2 {
+            z-index: 4;
+            width: 3.1%;
+            height: 3.9%;
+            left: 41.8%;
+            top: 18%;
+            transform: rotate(-5deg);
+        }
+        .leaf3 {
+            z-index: 4;
+            width: 3.5%;
+            left: 18.3%;
+            top: 30.4%;
+            transform: translateZ(-4px);
+        }
+        .leaf4 {
+            z-index: 4;
+            width: 2.9%;
+            left: 44.4%;
+            top: 38%;
+        }
+        .leaf5 {
+            z-index: 4;
+            width: 3.1%;
+            left: 28%;
+            top: 40.2%;
+            transform: translateZ(-11px) rotate(-3deg);
+        }
+        .leaf6 {
+            z-index: 4;
+            width: 1.7%;
+            left: 24.8%;
+            top: 44%;
+            transform: translateZ(-24px);
+        }
+        .leaf7 {
+            z-index: 4;
+            width: 14.8%;
+            left: 18.4%;
+            top: 69%;
+            transform: translateZ(3px);
+        }
+        .leaf8 {
+            z-index: 4;
             width: 2.3%;
             left: 43%;
-            bottom: 19%;
-            z-index: 1;
-            // transition: transform 2.2s 0.1s cubic-bezier(0.23, 1, 0.32, 1);
-            transition: transform 1.2s cubic-bezier(0.49, 0.01, 0.27, 1);
+            top: 75%;
+            transform: translateZ(15px);
         }
     }
 }

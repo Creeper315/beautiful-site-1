@@ -46,21 +46,6 @@ const BkPattern: NextPage<any> = forwardRef(
 
             return { backgroundPosition: `0px ${BkPosition}px` };
         }
-        // function scrollByAmount(px: number) {
-        //     // positive px - scroll down by ... px
-        //     // negative px - scroll up by ... px
-        //     px = Math.round(px);
-        //     setBkPosition(BkPosition + px);
-        // }
-        // function scrollToPercent(per: number) {
-        //     // input per from 0 ~ 1.
-        //     let px = allPagePx * per;
-        //     scrollToPx(px);
-        // }
-        // function scrollToPx(px: number) {
-        //     px = Math.floor(px);
-        //     setBkPosition(px);
-        // }
 
         useImperativeHandle(myRef, () => ({
             // scrollByAmount,

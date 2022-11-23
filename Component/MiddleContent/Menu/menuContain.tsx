@@ -5,8 +5,11 @@ import ProgressBar from "../Home/progressBar";
 import DragBar from "./dragBar";
 import ViewPortSize from "../../OtherComponent/myViewportSize";
 import BkPattern, { ScrollMode } from "./bkPattern";
-import OneMenu from "./oneMenu";
+import OneMenu, { txtDir } from "./oneMenu";
 import WheelHandler, { scrollType } from "../../OtherComponent/wheelHandler";
+// import axios from "axios";
+
+import { AllData } from "./data";
 
 const MenuContain = () => {
     const pattern1 = "https://koox.co.uk/assets/images/shapes/01.png";
@@ -20,6 +23,7 @@ const MenuContain = () => {
         zIndex: 2,
         right: "70px",
         top: "70px",
+        // border: "1px dashed",
     };
     const bkRef = useRef<any>({ current: { scrollByAmount: () => {} } });
     const [Vh, setVh] = useState(0);
@@ -32,12 +36,60 @@ const MenuContain = () => {
     const [PageIdx, setPageIdx] = useState<number>(1); // One based
     const [ScrollPercent, setScrollPercent] = useState(0); // number between 0 ~ 1
     const [Mode, setMode] = useState<ScrollMode>(ScrollMode.scroll);
-    const [AllData, setAllData] = useState<{}[]>([]);
+    // const [AllData, setAllData] = useState<{}[]>([]);
+    const totalPageCount = AllData.length;
 
-    const totalPageCount = 20;
+    // const Text = {
+    //     type: "cold-press",
+    //     name: "Ultimate Detox",
+    //     price: "7.95",
+    // };
+    // const Description = {
+    //     line1: "Made with 100% organic ingredients",
+    //     line2: "apple, lemon, celery, parsley, spinach, kale, ginger & nothing else",
+    //     line3: `Per 100ml Energy 174kj (41kal) -
+    //     Fat 0.0 of which saturated 0.0 -
+    //     Carbohydrates 9.3g of which sugar 9.3g -
+    //     Fiber 1.0g - Protein 0.3g - Salt 0.03g`,
+    // };
+
     const styleTopTransTotalPx = useMemo(() => {
         return Math.round((totalPageCount - 1) * Vh);
     }, [Vh]);
+
+    // type oneMenu = {
+    //     img: string;
+    //     bkImg: string;
+    // };
+
+    // useEffect(() => {
+    //     axios
+    //         .get("http://localhost:3000/api/menu", {
+    //             params: {
+    //                 test: "uiuiu",
+    //             },
+    //         })
+    //         .then(({ data }: { data: oneMenu[] }) => {
+    //             setAllData(data);
+    //         });
+    // }, []);
+
+    function renderAllMenu() {
+        let bool = true;
+        return AllData.map((e, idx) => {
+            let prop = {
+                shouldExpand,
+                expandMenu,
+                shrinkMenu,
+                btn2Sty,
+                PageIdx,
+                Idx: idx,
+                Dir: bool ? txtDir.left : txtDir.right,
+            };
+            bool = !bool;
+            return <OneMenu key={idx} {...prop} MenuData={e} />;
+        });
+    }
 
     function shouldExpand() {
         // 因为点击 加号，屏幕虽然扩大了，但是如果拖动 drag bar，布局还是会显示缩小版本。
@@ -49,14 +101,9 @@ const MenuContain = () => {
         }
     }
 
-    function getClass1() {
-        if (Expand) return "expand";
-        return "";
-    }
-    function getClass2() {
-        if (Above) return "above";
-        return "";
-    }
+    const getClass1 = () => (Expand ? "expand" : "");
+
+    const getClass2 = () => (Above ? "above" : "");
 
     function expandMenu() {
         setCanChangeView(false);
@@ -73,15 +120,31 @@ const MenuContain = () => {
         }, 1000);
     }
 
+    const setPercentByPage = (pi: number) => {
+        let k = (pi - 1) / (totalPageCount - 1);
+        // console.log("new per: ", pi, k);
+        setScrollPercent(k);
+        return k;
+    };
+
+    const setPageByPercent = (per: number) => {
+        let k = Math.round((totalPageCount - 1) * per) + 1;
+        setPageIdx(k);
+        return k;
+    };
+
     function flipPage(e: scrollType, from = 1, to = totalPageCount): void {
+        shrinkMenu();
         if (e == scrollType.up) {
             if (PageIdx <= from) return;
             // console.log(`flip from ${PageIdx} to ${PageIdx - 1}`);
             setPageIdx(PageIdx - 1);
+            setPercentByPage(PageIdx - 1);
         } else if (e == scrollType.down) {
             if (PageIdx >= to) return;
             // console.log(`flip from ${PageIdx} to ${PageIdx + 1}`);
             setPageIdx(PageIdx + 1);
+            setPercentByPage(PageIdx + 1);
         }
     }
 
@@ -102,7 +165,7 @@ const MenuContain = () => {
     return (
         <>
             <div id="menu-contain-1" className={getClass2()}>
-                {/* <div className="mid-line"></div> */}
+                <div className="mid-line"></div>
 
                 <div className="overflow-contain">
                     <DragBar
@@ -113,9 +176,10 @@ const MenuContain = () => {
                             setPageIdx,
                             ScrollPercent,
                             setScrollPercent,
+                            setPercentByPage,
+                            setPageByPercent,
                             totalPageCount,
                             Expand,
-                            // Dragging,
                         }}
                     />
                 </div>
@@ -136,16 +200,16 @@ const MenuContain = () => {
                             className="menu-contain-4"
                             style={getContain4Sty()}
                         >
-                            <OneMenu
+                            {renderAllMenu()}
+                            {/* <OneMenu
                                 {...{
                                     Expand,
                                     shouldExpand,
                                     expandMenu,
                                     shrinkMenu,
-                                    pattern1,
-                                    img,
                                     btn2Sty,
                                 }}
+                                dir={txtDir.left}
                             />
                             <OneMenu
                                 {...{
@@ -153,11 +217,10 @@ const MenuContain = () => {
                                     shouldExpand,
                                     expandMenu,
                                     shrinkMenu,
-                                    pattern2,
-                                    img,
                                     btn2Sty,
                                 }}
-                            />
+                                dir={txtDir.right}
+                            /> */}
 
                             {/* /// */}
                         </div>
@@ -168,7 +231,7 @@ const MenuContain = () => {
             <ViewPortSize {...{ setVh }} />
             <WheelHandler
                 actionFun={flipPage}
-                deps={[PageIdx]}
+                deps={[PageIdx, ScrollPercent]}
                 scrollBetweenDelay={650}
             />
         </>

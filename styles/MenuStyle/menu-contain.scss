@@ -32,7 +32,9 @@
 
         @include oneMenu;
         @include progressBar;
+
         .menu-contain-3 {
+            // 这个 container，height 是 100vh，纯粹是为了装下所有的 one-menu，为了 overflow:scroll
             position: absolute;
             width: 100%;
             height: 100%;
@@ -40,9 +42,11 @@
             // overflow: scroll;
         }
         .menu-contain-4 {
+            // 这里没有 height 是因为，里面装了很多 one-menu , 每个 one-menu 的 height 都是 100vh，
+            // 所以，这里的 height 就 fit content 就行了
             position: relative;
             width: 100%;
-            // height: 200vh;
+
             transition: all 0.6s ease;
             border: 3px dashed brown;
 

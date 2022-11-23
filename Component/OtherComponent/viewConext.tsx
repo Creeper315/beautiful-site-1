@@ -20,7 +20,9 @@ const ViewProvider: NextPage<any> = (props) => {
 
     function onChangeView(v: ViewEnum) {
         if (v == router.pathname || !CanChangeView) return;
-        router.replace({ pathname: v });
+        setTimeout(() => {
+            router.replace({ pathname: v });
+        }, 700);
         // setCurrentView(v);
         setLoad(!Load);
     }

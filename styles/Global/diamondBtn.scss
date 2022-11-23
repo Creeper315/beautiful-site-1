@@ -4,21 +4,25 @@
     position: relative;
     z-index: 1;
     @include centering;
-    transition: all 0.2s ease-out;
+    transition: opacity 1.5s ease, transform 0.2s ease-out;
+    // border: 1px solid orange;
 
     .hover-area {
+        // border: 1px solid orange;
         position: absolute;
         z-index: inherit;
-        width: 450%;
-        height: 450%;
+        width: 500%;
+        height: 500%;
         // @include red;
         border-radius: 40%;
         @include centering;
 
+        transition: transform 0.8s ease-out;
+
         .selection-area {
             z-index: inherit;
-            width: 52%;
-            height: 52%;
+            width: 70%;
+            height: 70%;
             border-radius: 50%;
             // border: 1px dashed brown;
             cursor: pointer;
@@ -47,11 +51,11 @@
             color: $themeGreen;
             // @include red;
             transition: inherit;
+            // perspective-origin:
         }
     }
 }
 .diamond-btn.hide {
-    width: 0;
-    height: 0;
+    transform: scale(0);
     opacity: 0;
 }

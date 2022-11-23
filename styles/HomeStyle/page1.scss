@@ -3,10 +3,14 @@
 @mixin page1 {
     .page-sub1 {
         @include maxSize;
-        // border: 2px dashed;
+
+        transition: all 0.5s ease-out;
+        transform: perspective(100vh) rotateX(calc(0.2 * var(--rotateX)))
+            rotateY(calc(0.2 * var(--rotateY)));
 
         img {
             position: absolute;
+            transition: all 1s ease;
         }
         .lb1 {
             width: 19.7%;

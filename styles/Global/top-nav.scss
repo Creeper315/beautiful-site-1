@@ -6,7 +6,8 @@
     height: 90px;
     flex-shrink: 0;
     @include centering;
-    @include red;
+    border: 1px solid blue;
+
     // background-color: white;
     // gap: 18px;
     gap: 0;
@@ -37,9 +38,10 @@
 
     .underline {
         background-color: $themeGreen;
-        transition: all 0.4s cubic-bezier(0.15, 0.99, 0.29, 1.01);
+        transition: all 0.7s cubic-bezier(0.15, 0.99, 0.29, 1.01);
         position: fixed;
         height: 4px;
-        border-radius: 4px;
+        border-radius: 2px;
+        opacity: 0.9;
     }
 }

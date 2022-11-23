@@ -1,10 +1,25 @@
 // @import "path/to/hamburgers";
 
 $themeGreen: rgb(33, 87, 50);
+$homeBackColor: #eff3f0;
+$menuBackColor: #f6f8f6;
+$orderBackColor: #f3f3f3;
+
 $windowWidth: 1470px;
 $windowHeight: 809px;
 
 $menuExpandPadding: 25px;
+
+$p1_bk: #eff3f0;
+$p1_stripe: #f6f8f6;
+$p2_bk: #f6f2f1;
+$p2_stripe: #f9f7f7;
+$p3_bk: #f9f5f3;
+$p3_stripe: #fbf9f8;
+$p4_bk: #f7f6f3;
+$p4_stripe: #fafaf8;
+$p5_bk: #f5f7f5;
+$p5_stripe: #f6f8f6;
 
 ._themeBg {
     background-color: #215732;

@@ -1,0 +1,94 @@
+@import "../variable.scss";
+
+#test-page {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(234, 245, 213);
+    @include centering;
+
+    .parent {
+        position: relative;
+        width: 60%;
+        height: 73%;
+        border: 2px dashed;
+        perspective: 600px;
+        perspective-origin: 50% 50%;
+        transform-style: preserve-3d;
+        // overflow: hidden;
+
+        padding: 20px;
+        .child {
+            position: absolute;
+            clip: rect(0, calc(100% - 10px), calc(100% - 10px), 0);
+            // overflow: hidden;
+            // perspective: 600px;
+            // transform-style: preserve-3d;
+            // perspective-origin: 50% 50%;
+            // perspective: 600px;
+            // transform: translate(0);
+            width: 200px;
+            height: 200px;
+            border: 1px solid blue;
+            margin: 0 -70px -70px 0;
+            @include centering;
+            // clip: rect(0, 100vw, 100vh, 0);
+        }
+        .c1 {
+            // z-index: 1;
+
+            // overflow: scroll;
+            background-color: rgb(164, 42, 42, 0.7);
+            // transform: rotateY(50deg);
+
+            // transform: translateZ(1px);
+        }
+        .c2 {
+            // z-index: 1;
+            // position: absolute;
+            background-color: rgb(255, 252, 80, 0.7);
+            left: 10%;
+            // transform: translateZ(1px);
+        }
+
+        .sub {
+            // transform-style: preserve-3d;
+            // perspective: 600px;
+            position: relative;
+            width: 80%;
+            height: 80%;
+        }
+        .s1 {
+            background-color: aliceblue;
+        }
+        .s2 {
+            // overflow: hidden;
+
+            background-color: rgb(121, 185, 241);
+        }
+        .item {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            font-size: 2rem;
+        }
+        .i1 {
+            z-index: 1;
+            background-color: red;
+
+            // transform: translateZ(1px);
+            transform: rotateX(20deg) translateZ(50px);
+        }
+        .i2 {
+            // z-index: 1;
+            // transform: translateZ(10px);
+            background-color: green;
+        }
+        .i3 {
+            background-color: blue;
+        }
+        .i4 {
+            background-color: whitesmoke;
+        }
+    }
+}

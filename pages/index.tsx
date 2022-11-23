@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import HomeContain from "../Component/MiddleContent/Home/homeContain";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import UseViewportSize from "../Component/OtherComponent/myViewportSize";
 import FootMsg from "../Component/OtherComponent/footMsg";
 // import Test from "../Component/TransitionSection/test";
@@ -8,6 +8,7 @@ import FootMsg from "../Component/OtherComponent/footMsg";
 const Index: NextPage<{ hi: any }> = ({ hi }) => {
     const [Vw, setVw] = useState(0);
     const [Vh, setVh] = useState(0);
+    const [PageIdx, setPageIdx] = useState(1);
 
     function getClass(): string {
         const ratio = 1470 / 809;
@@ -20,10 +21,10 @@ const Index: NextPage<{ hi: any }> = ({ hi }) => {
     }
 
     return (
-        <div id="home-contain-contain">
+        <div id="home-contain-contain" className={"p" + PageIdx}>
             <div className="mid-line"></div>
             <div className={`invisible-screen${getClass()}`}>
-                <HomeContain />;
+                <HomeContain {...{ PageIdx, setPageIdx }} />;
             </div>
             <UseViewportSize {...{ Vw, setVw, Vh, setVh }} />
             <FootMsg />

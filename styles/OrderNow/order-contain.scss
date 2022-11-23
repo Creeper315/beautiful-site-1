@@ -1,0 +1,128 @@
+@import "../variable.scss";
+
+#order-contain {
+    position: relative;
+    z-index: 0;
+    height: 100%;
+    min-height: 0;
+    // border: 3px dashed purple;
+    @include centering;
+    flex-direction: column;
+    background-image: url(../../public/img/bg-pattern.png);
+    background-color: $orderBackColor;
+    margin: 0 90px;
+
+    a {
+        position: relative;
+        font-family: myRationalBold;
+        font-size: 10vw;
+        line-height: 1;
+        margin-bottom: 50px;
+        list-style: none;
+        white-space: nowrap;
+        text-decoration: none;
+        color: $themeGreen;
+        transition: color 0.6s ease;
+        letter-spacing: 8px;
+        img {
+            position: absolute;
+            transition: all 0.8s ease;
+            transform: scale(0.2);
+            opacity: 0.9;
+        }
+    }
+
+    a.out {
+        color: rgb(184, 184, 184);
+        img {
+            transform: scale(0);
+        }
+    }
+
+    a.show {
+        img {
+            transform: scale(1);
+        }
+    }
+
+    .a1 {
+        .i1 {
+            height: 60%;
+            left: 0;
+            bottom: -28%;
+        }
+        .i2 {
+            height: 40%;
+            left: 13%;
+            top: -12%;
+        }
+        .i3 {
+            left: 42%;
+            height: 94%;
+            bottom: -17%;
+        }
+        .i4 {
+            left: 58%;
+            height: 83%;
+        }
+        .i5 {
+            left: 77%;
+            height: 62%;
+            bottom: -5%;
+        }
+    }
+    .a2 {
+        .i1 {
+            height: 145%;
+            left: 0;
+            bottom: -28%;
+        }
+        .i2 {
+            height: 40%;
+            left: 13%;
+            top: -12%;
+        }
+        .i3 {
+            left: 42%;
+            height: 55%;
+            bottom: -17%;
+        }
+        .i4 {
+            left: 58%;
+            height: 50%;
+            top: 0;
+        }
+        .i5 {
+            left: 77%;
+            height: 75%;
+            bottom: -5%;
+        }
+    }
+    .a3 {
+        .i1 {
+            height: 60%;
+            left: 0;
+            bottom: -28%;
+        }
+        .i2 {
+            height: 61%;
+            left: 13%;
+            top: -12%;
+        }
+        .i3 {
+            left: 42%;
+            height: 55%;
+            bottom: -17%;
+        }
+        .i4 {
+            left: 58%;
+            height: 50%;
+            top: 0;
+        }
+        .i5 {
+            left: 77%;
+            height: 100%;
+            bottom: -5%;
+        }
+    }
+}

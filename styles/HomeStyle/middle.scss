@@ -1,0 +1,148 @@
+@import "../variable.scss";
+@import "../HomeStyle/home-title.scss";
+@import "../HomeStyle/home-contain.scss";
+@import "../Global/top-nav.scss";
+@import "../Global/diamondBtn.scss";
+@import "../Global/footMsg.scss";
+
+// $ratio: $windowWidth / $windowHeight;
+#home-contain-contain.p1 {
+    background-color: $p1_bk;
+}
+#home-contain-contain.p2 {
+    background-color: $p2_bk;
+}
+#home-contain-contain.p3 {
+    background-color: $p3_bk;
+}
+#home-contain-contain.p4 {
+    background-color: $p4_bk;
+}
+#home-contain-contain.p5 {
+    background-color: $p5_bk;
+}
+#home-contain-contain {
+    // --page-idx: 1; // defualt is one
+    position: relative;
+    z-index: 0;
+    height: 100%;
+    // border: 2px dashed lightcoral;
+    margin: 0 90px;
+    min-height: 0;
+    background-image: url(../../public/img/bg-pattern.png);
+    background-position-x: -2px;
+    background-color: $homeBackColor;
+
+    // @if var(--page-idx) == "1" {
+    //     background-color: $p1_bk;
+    // } @else if var(--page-idx) == "2" {
+    //     background-color: $p2_bk;
+    // } @else if var(--page-idx) == "3" {
+    //     background-color: $p3_bk;
+    // } @else if var(--page-idx) == "4" {
+    //     background-color: $p4_bk;
+    // } @else if var(--page-idx) == "5" {
+    //     background-color: $p5_bk;
+    // }
+
+    @include centering;
+
+    .mid-line {
+        position: absolute;
+        height: 100%;
+        width: 0px;
+        border: 1px dashed;
+        position: absolute;
+        left: 50%;
+        &::after {
+            content: 123123;
+        }
+    }
+}
+// rgb(234, 245, 213)  // good looking green
+// #test-page {
+//     height: 100%;
+//     width: 100%;
+//     background-color: rgb(234, 245, 213);
+//     @include centering;
+
+// .item1 {
+//     position: relative;
+//     left: 100px;
+//     width: 300px;
+//     height: 300px;
+//     background-color: rgb(236, 149, 55, 0.8);
+//     font-size: 4rem;
+//     z-index: 0;
+//     transform-style: preserve-3d;
+//     transform: rotateY(-20deg);
+
+//     .c1 {
+//         z-index: 2;
+//         transform: translateZ(50px) rotateX(30deg);
+
+//         position: relative;
+//         top: 20px;
+//         left: 80px;
+//         width: 50px;
+//         height: 50px;
+//         background-color: rgba(237, 125, 6);
+//     }
+// }
+// .item2 {
+//     position: relative;
+//     right: 100px;
+//     width: 300px;
+//     height: 300px;
+//     background-color: rgba(232, 90, 237, 0.8);
+//     font-size: 4rem;
+//     // z-index: 0;
+
+//     .c2 {
+//         // z-index: 0;
+//         width: 50px;
+//         height: 50px;
+//         background-color: rgba(18, 230, 110);
+//     }
+// }
+
+// .scene {
+//     width: 500px;
+//     height: 350px;
+//     border: 1px dashed;
+
+//     // perspective: 500px;
+
+//     // perspective-origin: center right;
+//     // left: var(--xx);
+//     perspective-origin: var(--xx, 50%) var(--yy, 50%);
+//     // transform-style: preserve-3d;
+//     perspective: 400px;
+
+//     transform: rotateY(0deg);
+//     @include centering;
+// }
+// .item {
+//     position: absolute;
+//     width: 200px;
+//     height: 140px;
+//     @include centering;
+//     font-size: 1.5rem;
+// }
+// .one {
+//     background-color: rgb(236, 149, 55, 0.5);
+//     transform: rotateY(70deg) translateZ(50px);
+// }
+// .two {
+//     background-color: rgba(70, 90, 239, 0.5);
+//     transform: translateZ(0px);
+// }
+// .three {
+//     background-color: rgba(232, 90, 237, 0.5);
+//     transform: translateZ(-100px);
+// }
+// .four {
+//     background-color: antiquewhite;
+//     transform: rotateX(-90deg) translateZ(70px);
+// }
+// }

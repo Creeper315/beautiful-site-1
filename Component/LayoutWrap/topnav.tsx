@@ -1,7 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { ViewConext, ViewEnum } from "../OtherComponent/viewConext";
 import { useRouter } from "next/router";
-import path from "path";
 
 const TopNav = () => {
     // height, flex, center, gap,
@@ -30,7 +29,7 @@ const TopNav = () => {
     }
 
     function getStyle(): object {
-        if (HoverOn != null && CanChangeView) {
+        if (HoverOn != null) {
             return toReturn(HoverOn);
         }
         let s: string = router.pathname;
@@ -42,7 +41,6 @@ const TopNav = () => {
             s != ViewEnum.about &&
             s != ViewEnum.contact
         ) {
-            window.alert(`path name not exist in ViewEnum ? ${s}`);
             return {};
         }
         let pathname: ViewEnum = s;
@@ -74,9 +72,9 @@ const TopNav = () => {
                 ref={btn1}
                 // className="border border-primary mx-4 _centering _font _themeTxt "
                 // style={{ zIndex: 2, height: "75%" }}
-                onMouseEnter={() => {
-                    setHoverOn(ViewEnum.home);
-                }}
+                // onMouseEnter={() => {
+                //     setHoverOn(ViewEnum.home);
+                // }}
                 onMouseLeave={() => {
                     setHoverOn(null);
                 }}
@@ -87,9 +85,9 @@ const TopNav = () => {
             <div
                 className={getClass()}
                 ref={btn2}
-                onMouseEnter={() => {
-                    setHoverOn(ViewEnum.menu);
-                }}
+                // onMouseEnter={() => {
+                //     setHoverOn(ViewEnum.menu);
+                // }}
                 onMouseLeave={() => {
                     setHoverOn(null);
                 }}
@@ -101,9 +99,9 @@ const TopNav = () => {
             <div
                 className={getClass()}
                 ref={btn3}
-                onMouseEnter={() => {
-                    setHoverOn(ViewEnum.orderNow);
-                }}
+                // onMouseEnter={() => {
+                //     setHoverOn(ViewEnum.orderNow);
+                // }}
                 onMouseLeave={() => {
                     setHoverOn(null);
                 }}
@@ -116,9 +114,9 @@ const TopNav = () => {
             <div
                 className={getClass()}
                 ref={btn4}
-                onMouseEnter={() => {
-                    setHoverOn(ViewEnum.about);
-                }}
+                // onMouseEnter={() => {
+                //     setHoverOn(ViewEnum.about);
+                // }}
                 onMouseLeave={() => {
                     setHoverOn(null);
                 }}
@@ -129,9 +127,9 @@ const TopNav = () => {
             <div
                 className={getClass()}
                 ref={btn5}
-                onMouseEnter={() => {
-                    setHoverOn(ViewEnum.contact);
-                }}
+                // onMouseEnter={() => {
+                //     setHoverOn(ViewEnum.contact);
+                // }}
                 onMouseLeave={() => {
                     setHoverOn(null);
                 }}

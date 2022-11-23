@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
 
 const DiamondBtn: NextPage<any> = ({ Fun, show, Sty }) => {
-    const size = 65;
+    const size = 72;
     const parent = useRef<HTMLDivElement>(null);
     const [OuterX, setOuterX] = useState(0);
     const [InnerX, setInnerX] = useState(0);
@@ -33,8 +33,8 @@ const DiamondBtn: NextPage<any> = ({ Fun, show, Sty }) => {
         // console.log("transY: ", transX, x2, x1, halfW);
         setOuterX(0.3 * transX);
         setOuterY(0.3 * transY);
-        setInnerX(0.04 * transX);
-        setInnerY(0.04 * transY);
+        setInnerX(-0.04 * transX);
+        setInnerY(-0.04 * transY);
     }
     function getC() {
         if (show == true || show == undefined) return "";

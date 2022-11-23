@@ -8,7 +8,7 @@
         transform: translate(-50%, -50%);
         width: calc(100vw - 2 * $menuExpandPadding);
         height: 0;
-        @include red;
+        // @include red;
         z-index: 2;
         .drag-bar {
             position: absolute;

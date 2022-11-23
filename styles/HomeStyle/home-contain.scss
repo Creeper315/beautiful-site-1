@@ -3,6 +3,9 @@
 @import "../Global/progress-bar.scss";
 @import "./page1.scss";
 @import "./page2.scss";
+@import "./page3.scss";
+@import "./page4.scss";
+@import "./page5.scss";
 
 //cubic-bezier(0.23, 1, 0.32, 1)
 //cubic-bezier( 0.49, 0.01, 0.27, 1 )
@@ -18,16 +21,29 @@
         // border: 2px dashed seagreen;
 
         #home-contain {
+            // .hahadiv {
+            //     --st: 20px;
+            //     width: 30px;
+            //     height: 30px;
+            //     background-color: var(--ccc);
+            //     position: relative;
+            //     left: var(--st, 20px);
+            //     right: 20px;
+            //     transition: all 0.3s ease;
+            // }
             z-index: 0;
             position: relative;
-            // border: 2px dashed rgb(92, 46, 139);
             flex-shrink: 0;
 
-            // overflow: hidden;
             @include maxSize;
             @include home-title;
             @include progressBar;
             @include centering;
+
+            --rotateX: 0deg;
+            --rotateY: 0deg;
+            --percentX: 50%;
+            --percentY: 50%;
 
             .clip-contain,
             .clip-top-contain,
@@ -38,58 +54,61 @@
             }
             .clip-top-contain {
                 // border: 2px dashed pink;
-                clip: rect(90px, $windowWidth, $windowHeight, 0);
+                clip: rect(90px, 100vw, 100vh, 0);
             }
             .clip-bottom-contain {
                 // border: 2px dashed red;
-                clip: rect(0, $windowWidth, $windowHeight - 90px, 0);
+                clip: rect(0, 100vw, calc(100vh - 90px), 0);
             }
             .clip-contain {
                 // border: 2px dashed blue;
-                clip: rect(90px, $windowWidth, $windowHeight - 90px, 0);
+                clip: rect(90px, 100vw, calc(100vh - 90px), 0);
             }
             [class^="page-sub"] {
-                z-index: 0;
-                position: relative;
+                position: absolute;
             }
             @include page1;
             @include page2;
+            @include page3;
+            @include page4;
+            @include page5;
 
             img {
-                transition: all 0.9s ease;
+                transition: all 1s ease;
             }
             .translate-minus5 {
-                transform: translateY(-5 * 100vh);
+                translate: 0 -5 * 100vh;
+                // transform: translateY(-5 * 100vh);
             }
             .translate-minus4 {
-                transform: translateY(-4 * 100vh);
+                translate: 0 -4 * 100vh;
             }
             .translate-minus3 {
-                transform: translateY(-3 * 100vh);
+                translate: 0 -3 * 100vh;
             }
             .translate-minus2 {
-                transform: translateY(-2 * 100vh);
+                translate: 0 -2 * 100vh;
             }
             .translate-minus1 {
-                transform: translateY(-1 * 100vh);
+                translate: 0 -1 * 100vh;
             }
             .translate-0 {
-                transform: translateY(0);
+                translate: 0 0;
             }
             .translate-plus1 {
-                transform: translateY(1 * 100vh);
+                translate: 0 1 * 100vh;
             }
             .translate-plus2 {
-                transform: translateY(2 * 100vh);
+                translate: 0 2 * 100vh;
             }
             .translate-plus3 {
-                transform: translateY(3 * 100vh);
+                translate: 0 3 * 100vh;
             }
             .translate-plus4 {
-                transform: translateY(4 * 100vh);
+                translate: 0 4 * 100vh;
             }
             .translate-plus5 {
-                transform: translateY(5 * 100vh);
+                translate: 0 5 * 100vh;
             }
         }
     }
