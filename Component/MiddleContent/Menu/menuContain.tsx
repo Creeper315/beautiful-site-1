@@ -12,18 +12,11 @@ import WheelHandler, { scrollType } from "../../OtherComponent/wheelHandler";
 import { AllData } from "./data";
 
 const MenuContain = () => {
-    const pattern1 = "https://koox.co.uk/assets/images/shapes/01.png";
-    const pattern2 = "https://koox.co.uk/assets/images/shapes/05.png";
-    const img =
-        "https://koox.co.uk/data/wp-content/uploads/2018/05/Test_nico-575x1024.png";
-    const _img =
-        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC";
     const btn2Sty = {
         position: "absolute",
         zIndex: 2,
         right: "70px",
         top: "70px",
-        // border: "1px dashed",
     };
     const bkRef = useRef<any>({ current: { scrollByAmount: () => {} } });
     const [Vh, setVh] = useState(0);
@@ -165,7 +158,7 @@ const MenuContain = () => {
     return (
         <>
             <div id="menu-contain-1" className={getClass2()}>
-                <div className="mid-line"></div>
+                {/* <div className="mid-line"></div> */}
 
                 <div className="overflow-contain">
                     <DragBar
@@ -232,7 +225,7 @@ const MenuContain = () => {
             <WheelHandler
                 actionFun={flipPage}
                 deps={[PageIdx, ScrollPercent]}
-                scrollBetweenDelay={650}
+                scrollBetweenDelay={680}
             />
         </>
     );

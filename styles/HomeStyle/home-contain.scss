@@ -45,6 +45,10 @@
             --percentX: 50%;
             --percentY: 50%;
 
+            img {
+                transition: all 1.2s 0.05s cubic-bezier(0.43, 0.195, 0.02, 1);
+            }
+
             .clip-contain,
             .clip-top-contain,
             .clip-bottom-contain,
@@ -73,9 +77,6 @@
             @include page4;
             @include page5;
 
-            img {
-                transition: all 1s ease;
-            }
             .translate-minus5 {
                 translate: 0 -5 * 100vh;
                 // transform: translateY(-5 * 100vh);

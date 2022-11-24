@@ -3,6 +3,7 @@
 @mixin page3 {
     .page-sub3 {
         @include maxSize;
+        $trans1: translate 1.27s 0.1s cubic-bezier(0.43, 0.195, 0.02, 1);
 
         transition: perspective-origin 0.5s cubic-bezier(0.23, 1, 0.32, 1); // 这一行是用在 perspective-origin 上的
         perspective: 100vh;
@@ -15,14 +16,21 @@
         }
         // middle
         .bk {
+            // transition: translate 1.25s 0.08s cubic-bezier(0.43, 0.195, 0.02, 1);
+            // transition: translate 1.3s 0.15s cubic-bezier(0.43, 0.195, 0.02, 1);
+            transition: $trans1;
+
             width: 60%;
             left: 8.1%;
-            top: 19.2%;
+            top: 18.7%;
             // border: 1px dashed red;
 
             transform: translateZ(-55px);
         }
         .ground {
+            // transition: translate 1.3s 0.09s cubic-bezier(0.43, 0.195, 0.02, 1);
+            transition: $trans1;
+
             width: 45%;
             top: 38%;
             left: 16%;

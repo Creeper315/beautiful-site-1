@@ -14,19 +14,19 @@
         position: absolute;
         z-index: 1;
         // border: 2px solid purple;
+        transition: all 0.9s cubic-bezier(0.43, 0.195, 0.02, 1);
+        transition-delay: 0.28s;
     }
 
     .home-title1 {
         @include centering;
         color: $themeGreen;
         font-family: myRationalBold, sans-serif;
-        transition: all 0.8s cubic-bezier(0.43, 0.195, 0.02, 1);
         letter-spacing: 0.05em;
         line-height: calc(45px + (78 - 45) * (100vw - 320px) / (1440 - 320));
         font-size: calc(33px + (65 - 33) * (100vw - 320px) / (1440 - 320));
 
         transform: translateY(0);
-        transition-delay: 0.3s;
         opacity: 1;
     }
 
@@ -37,9 +37,7 @@
         flex-direction: row;
         opacity: 1;
 
-        transition: all 0.8s cubic-bezier(0.43, 0.195, 0.02, 1);
         transform: translateY(0);
-        transition-delay: 0.3s;
 
         .nothing {
             width: 50%;
@@ -75,7 +73,7 @@
     .home-title5.up {
         transform: translateY(-20vh);
         opacity: 0;
-        transition-delay: 0;
+        // transition-delay: 0;
     }
     .home-title1.down,
     .home-title2.down,
@@ -84,7 +82,7 @@
     .home-title5.down {
         transform: translateY(20vh);
         opacity: 0;
-        transition-delay: 0;
+        // transition-delay: 0;
     }
 
     .home-title5 {
@@ -95,8 +93,6 @@
 
         opacity: 1;
         transform: translateY(0);
-        transition: all 0.8s cubic-bezier(0.43, 0.195, 0.02, 1);
-        transition-delay: 0.3s;
         color: $themeGreen;
         padding-bottom: 35px;
         .menu {

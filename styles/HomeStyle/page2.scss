@@ -19,7 +19,6 @@
         }
         .apple {
             transform: translateZ(-12px);
-
             z-index: 2;
             width: 17.5%;
             left: 28.4%;
@@ -55,7 +54,16 @@
             left: 24%;
             transform: translateZ(-4px);
         }
+        .leaf0 {
+            transition: translate 1.6s 0.05s cubic-bezier(0.43, 0.195, 0.02, 1);
+            z-index: 4;
+            width: 3.4%;
+            left: 39.5%;
+            top: 6%;
+            transform: rotateZ(50deg) translateZ(-5px);
+        }
         .leaf1 {
+            transition: translate 1.48s 0.05s cubic-bezier(0.43, 0.195, 0.02, 1);
             z-index: 4;
             width: 3.4%;
             left: 30%;
@@ -63,6 +71,9 @@
             transform: translateZ(-5px);
         }
         .leaf2 {
+            // transition: translate 1.6s 0.133s cubic-bezier(0.43, 0.195, 0.02, 1);
+            transition: translate 1.8s 0.08s cubic-bezier(0.43, 0.2, 0.02, 1);
+
             z-index: 4;
             width: 3.1%;
             height: 3.9%;
@@ -71,6 +82,8 @@
             transform: rotate(-5deg);
         }
         .leaf3 {
+            transition: translate 1.33s 0.08s cubic-bezier(0.43, 0.195, 0.02, 1);
+
             z-index: 4;
             width: 3.5%;
             left: 18.3%;
@@ -78,12 +91,15 @@
             transform: translateZ(-4px);
         }
         .leaf4 {
+            transition: translate 1.45s 0.04s cubic-bezier(0.43, 0.195, 0.02, 1);
+
             z-index: 4;
             width: 2.9%;
             left: 44.4%;
             top: 38%;
         }
         .leaf5 {
+            transition-delay: 0.07s;
             z-index: 4;
             width: 3.1%;
             left: 28%;
@@ -91,6 +107,8 @@
             transform: translateZ(-11px) rotate(-3deg);
         }
         .leaf6 {
+            transition: translate 1.25s 0.08s cubic-bezier(0.43, 0.195, 0.02, 1);
+
             z-index: 4;
             width: 1.7%;
             left: 24.8%;
@@ -105,6 +123,7 @@
             transform: translateZ(3px);
         }
         .leaf8 {
+            transition: translate 1.8s 0.08s cubic-bezier(0.43, 0.2, 0.02, 1);
             z-index: 4;
             width: 2.3%;
             left: 43%;

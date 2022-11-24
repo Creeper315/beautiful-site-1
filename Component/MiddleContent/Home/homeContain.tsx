@@ -103,7 +103,11 @@ const HomeContain: NextPage<{
                 <ImgPage1 {...{ PageIdx, type: clipType.overflow }} />
             </div>
             <ProgressBar PageIdx={PageIdx} totalPageCount={5} />
-            <WheelHandler actionFun={flipPage} deps={[PageIdx]} />
+            <WheelHandler
+                actionFun={flipPage}
+                deps={[PageIdx]}
+                scrollBetweenDelay={900}
+            />
             <UseViewportSize {...{ setVh, setVw }} />
         </div>
     );

@@ -2,7 +2,7 @@
 
 .diamond-btn {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     @include centering;
     transition: opacity 1.5s ease, transform 0.2s ease-out;
     // border: 1px solid orange;
@@ -20,9 +20,10 @@
         transition: transform 0.8s ease-out;
 
         .selection-area {
+            // 可以自己设置按钮的点击大小。比如 60% 的话，按钮就需要鼠标快要 hover 上去，才能点击。100% 点话，稍微靠近按钮，就能点
             z-index: inherit;
-            width: 70%;
-            height: 70%;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             // border: 1px dashed brown;
             cursor: pointer;

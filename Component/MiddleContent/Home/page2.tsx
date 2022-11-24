@@ -4,6 +4,8 @@ const aLeaf =
 const aLeaf2 = "https://koox.co.uk/assets/images/home/apple/apple-leaf.png";
 const bk = "https://koox.co.uk/assets/images/home/apple/background.png";
 const hand = "https://koox.co.uk/assets/images/home/apple/hand-flat.png";
+
+const leaf0 = "https://koox.co.uk/assets/images/home/apple/leaf-5.png";
 const leaf1 = "https://koox.co.uk/assets/images/home/apple/leaf-3.png";
 const leaf2 = "https://koox.co.uk/assets/images/home/apple/leaf-4.png";
 const leaf3 = "https://koox.co.uk/assets/images/home/apple/leaf-5.png";
@@ -21,6 +23,7 @@ const imgLayer0 = {
     aLeaf,
     aLeaf2,
     bk,
+    leaf0,
     leaf1,
     leaf2,
     leaf3,

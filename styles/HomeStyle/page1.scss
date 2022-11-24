@@ -10,7 +10,6 @@
 
         img {
             position: absolute;
-            transition: all 1s ease;
         }
         .lb1 {
             width: 19.7%;
@@ -18,6 +17,8 @@
             left: 2.72%;
         }
         .lb2 {
+            transition: translate 1.47s 0.05s cubic-bezier(0.43, 0.195, 0.02, 1);
+
             width: 18.4%;
             bottom: 9%;
             left: 24.76%;
@@ -47,6 +48,8 @@
             height: 21%;
         }
         .bm {
+            transition: translate 1.3s 0.05s cubic-bezier(0.43, 0.195, 0.02, 1);
+
             left: 45.7%;
             bottom: 24.72%;
             height: 7.4%;
@@ -62,6 +65,8 @@
             width: 5.44%;
         }
         .rb2 {
+            transition: translate 1.38s 0.05s cubic-bezier(0.43, 0.195, 0.02, 1);
+
             right: 40.3%;
             bottom: 15.2%;
             width: 5.58%;

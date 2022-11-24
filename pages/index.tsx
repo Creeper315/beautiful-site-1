@@ -22,7 +22,7 @@ const Index: NextPage<{ hi: any }> = ({ hi }) => {
 
     return (
         <div id="home-contain-contain" className={"p" + PageIdx}>
-            <div className="mid-line"></div>
+            {/* <div className="mid-line"></div> */}
             <div className={`invisible-screen${getClass()}`}>
                 <HomeContain {...{ PageIdx, setPageIdx }} />;
             </div>

@@ -58,7 +58,11 @@ const OneMenu: NextPage<prop> = ({
                     {/* <div className={`text-contain-3 ${getClass1()}`}> */}
                     <div className="text-1">{MenuData.category}</div>
                     <div className="text-2">{MenuData.title}</div>
-                    <div className="text-money">{`$${MenuData.price}`}</div>
+                    <div className="text-money">
+                        <div>$</div>
+                        {MenuData.price}
+                    </div>
+
                     <DiamondBtn Fun={expandMenu} show={!shouldExpand()} />
                     {/* </div> */}
                 </div>

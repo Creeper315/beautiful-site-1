@@ -4,6 +4,7 @@ import { ScrollMode } from "./bkPattern";
 import ViewPortSize from "../../OtherComponent/myViewportSize";
 import { throttle } from "lodash";
 import { time } from "console";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
 const DragBar: NextPage<any> = ({
     Mode,
@@ -139,7 +140,13 @@ const DragBar: NextPage<any> = ({
                     onMouseDown={handleDown}
                     ref={draggerDiv}
                     // onMouseUp={handleUp}   // 这个不行！因为如果鼠标在 div 外面 up(松开点击) 的话，就无法触发这个 event 了。所以需要 window 全局检测
-                >{`Drag & Drop`}</div>
+                >
+                    <MdKeyboardArrowLeft className="arr-left" />
+                    {"Drag & Drop " + PageIdx}
+                    <span style={{ margin: "0 2px" }}>/</span>
+                    {totalPageCount}
+                    <MdKeyboardArrowRight className="arr-right" />
+                </div>
             </div>
         </>
     );

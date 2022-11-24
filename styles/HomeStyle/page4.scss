@@ -3,6 +3,7 @@
 @mixin page4 {
     .page-sub4 {
         @include maxSize;
+        $trans1: translate 1.27s 0.1s cubic-bezier(0.43, 0.195, 0.02, 1);
 
         transition: perspective-origin 0.5s cubic-bezier(0.23, 1, 0.32, 1); // 这一行是用在 perspective-origin 上的
         perspective: 100vh;
@@ -21,6 +22,8 @@
         }
         // middle
         .bk {
+            transition: $trans1;
+
             z-index: 0;
             width: 65%;
             left: 5.7%;
@@ -29,6 +32,8 @@
             transform: translateZ(-90px);
         }
         .ground {
+            transition: $trans1;
+
             z-index: 1;
             width: 48%;
             top: 31.9%;
@@ -66,6 +71,8 @@
             transform: translateZ(-35px);
         }
         .tomato3 {
+            transition: translate 1.22s 0.08s cubic-bezier(0.43, 0.195, 0.02, 1);
+
             z-index: 1;
             width: 13.6%;
             left: 36.6%;
@@ -81,6 +88,8 @@
         }
         // lower
         .leaf4 {
+            transition: translate 1.25s 0.06s cubic-bezier(0.43, 0.195, 0.02, 1);
+
             z-index: 1;
             width: 8%;
             left: 31%;
@@ -88,6 +97,8 @@
             transform: translateZ(23px);
         }
         .tomato4 {
+            transition: $trans1;
+
             z-index: 0;
             width: 20%;
             left: 40%;
