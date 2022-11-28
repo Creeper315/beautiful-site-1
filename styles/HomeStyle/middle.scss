@@ -54,9 +54,12 @@
         border: 1px dashed;
         position: absolute;
         left: 50%;
-        &::after {
-            content: 123123;
-        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #home-contain-contain {
+        margin: 30px 30px;
     }
 }
 // rgb(234, 245, 213)  // good looking green

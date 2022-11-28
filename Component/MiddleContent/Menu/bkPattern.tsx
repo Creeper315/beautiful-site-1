@@ -8,57 +8,66 @@ export enum ScrollMode {
 }
 type prop = {
     PageIdx: number;
-    ScrollPercent: number;
+    // ScrollPercent: number;
     Mode: ScrollMode;
 };
 
-const BkPattern: NextPage<any> = forwardRef(
-    ({ Mode, PageIdx, ScrollPercent, totalPageCount }, myRef) => {
-        //
+const BkPattern: NextPage<any> = ({
+    Mode,
+    PageIdx,
+    ScrollPercent,
+    totalPageCount,
+    totalBkScrollPx,
+    bkRef,
+}) => {
+    //
 
-        // const [BkPosition, setBkPosition] = useState(0);
-        // const prevPageIdx = useRef(1);
-        const scrollRatio = 0.3;
-        const [Vh, setVh] = useState(0);
-        // const totalPageCount = 20;
-        const allPagePx = Math.round((totalPageCount - 1) * Vh * scrollRatio);
-        const onePagePx = allPagePx / totalPageCount;
+    // const [BkPosition, setBkPosition] = useState(0);
+    // const prevPageIdx = useRef(1);
+    const scrollRatio = 0.3;
+    const [Vh, setVh] = useState(0);
+    // const totalPageCount = 20;
+    const onePagePx = totalBkScrollPx / totalPageCount;
 
-        function addStyle() {
-            // calculate bkPositionFirst
-            // console.log("PageIdx ", PageIdx);
-            let BkPosition = 0;
+    function gClass() {
+        let s = Mode == ScrollMode.drag ? "drag" : "";
+        return "bk-pattern " + s;
+    }
 
-            if (Mode == ScrollMode.scroll) {
-                // console.log("herer");
-                let px = -(PageIdx - 1) * onePagePx;
-                // scrollToPx(px);
+    function addStyle() {
+        // calculate bkPositionFirst
+        // console.log("PageIdx ", PageIdx);
+        let BkPosition = 0;
 
-                BkPosition = Math.floor(px);
-                // console.log("new BkPosition: ", BkPosition);
-            }
-            if (Mode == ScrollMode.drag) {
-                // it is handled by calling 'childRef.current.scrollToPercent()' from the parent  ??
-                // scrollToPercent(ScrollPercent); ;
-                let px = -allPagePx * ScrollPercent;
-                BkPosition = Math.floor(px);
-            }
+        if (Mode == ScrollMode.scroll) {
+            // console.log("herer");
+            let px = -(PageIdx - 1) * onePagePx;
+            // scrollToPx(px);
 
+            BkPosition = Math.floor(px);
+            // console.log("new BkPosition: ", BkPosition);
             return { backgroundPosition: `0px ${BkPosition}px` };
         }
+        if (Mode == ScrollMode.drag) {
+            // it is handled by calling 'childRef.current.scrollToPercent()' from the parent  ??
+            // let px = -totalBkScrollPx * ScrollPercent;
+            // BkPosition = Math.floor(px);
+            return {};
+        }
 
-        useImperativeHandle(myRef, () => ({
-            // scrollByAmount,
-            // scrollToPercent,
-        }));
-
-        return (
-            <>
-                <div className="bk-pattern" style={addStyle()}></div>
-                <ViewPortSize {...{ setVh }} />
-            </>
-        );
+        // return { backgroundPosition: `0px ${BkPosition}px` };
     }
-);
 
+    // useImperativeHandle(myRef, () => ({
+    // scrollByAmount,
+    // scrollToPercent,
+    // }));
+
+    return (
+        <>
+            <div className={gClass()} style={addStyle()} ref={bkRef}></div>
+            <ViewPortSize {...{ setVh }} />
+        </>
+    );
+};
 export default BkPattern;

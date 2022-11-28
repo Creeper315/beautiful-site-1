@@ -35,7 +35,7 @@ const HomeContain: NextPage<{
     }, [PageIdx, Vw, Vh]);
 
     function flipPage(e: scrollType): void {
-        console.log("flip in home");
+        // console.log("flip in home");
         if (e == scrollType.up) {
             if (PageIdx <= 1) return;
             // console.log(`flip from ${PageIdx} to ${PageIdx - 1}`);
@@ -50,7 +50,6 @@ const HomeContain: NextPage<{
     const Thr = throttle(mouseHandler, 70);
 
     function mouseHandler(e: any) {
-        console.log("hd");
         if (container.current == null) return;
         // if (PageIdx == 1 || PageIdx == 3 || PageIdx == 5) {
         const maxDeg = 10;

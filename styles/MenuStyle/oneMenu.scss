@@ -22,6 +22,11 @@
             height: 63%;
             transition-delay: 0.07s;
         }
+        @media screen and (max-width: $breakPoint) {
+            .bottle {
+                height: 50%;
+            }
+        }
     }
     .bg-img.expand.txtLeft {
         .bottle {
@@ -130,6 +135,15 @@
         // border: 2px dashed brown;
         background-color: white;
         padding: 60px;
+        // padding: 30px;
+
+        @media screen and (max-width: $breakPoint) {
+            width: 67%;
+            padding: 60px 35px;
+            top: 7%;
+            right: 0;
+        }
+
         transition: all 0.8s 0.1s cubic-bezier(0.43, 0.195, 0.02, 1);
 
         .dm {

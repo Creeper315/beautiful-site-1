@@ -2,7 +2,7 @@ import React, { useMemo, useEffect, useState, memo } from "react";
 import { NextPage } from "next";
 
 const Test: NextPage<any> = ({ P, setP, val }) => {
-    console.log("Test Re render", P, val);
+    // console.log("Test Re render", P, val);
 
     const [State, setState] = useState(true);
 

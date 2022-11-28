@@ -81,9 +81,7 @@ const AllTitle: NextPage<{ PageIdx: number }> = ({ PageIdx }) => {
                 </div>
             </div>
             <div className={addHomeTitleClass(5)}>
-                <span className="menu" onClick={() => console.log("clcd")}>
-                    menu
-                </span>
+                <span className="menu">menu</span>
                 <span className="disc">Discover Now</span>
                 <DiamondBtn Fun={goToMenu} />
             </div>

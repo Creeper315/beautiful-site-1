@@ -43,6 +43,8 @@
             // transform: translateZ(1px);
         }
         .c2 {
+            --sty: translateX(50%) rotateY(10deg);
+            transform: var(--sty);
             // z-index: 1;
             // position: absolute;
             background-color: rgb(255, 252, 80, 0.7);

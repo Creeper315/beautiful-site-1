@@ -11,6 +11,12 @@
         // @include red;
         z-index: 2;
         .drag-bar {
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.4s ease;
+
+            --drag-px: 0px;
+            left: var(--drag-px);
+
             display: flex;
             justify-content: space-between;
 
@@ -18,7 +24,6 @@
             width: 200px;
             height: 64px;
             top: calc(50vh - $menuExpandPadding);
-            left: 0; // ← 用来位移这个按钮
             transform: translateY(-100%);
             background-color: $themeGreen;
             @include centering;
@@ -26,7 +31,6 @@
             white-space: nowrap;
             cursor: pointer;
             user-select: none;
-            transition: left 0.6s ease, transform 0.6s ease;
 
             color: white;
             // font-family: myRational;

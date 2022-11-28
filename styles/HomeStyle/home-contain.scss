@@ -16,7 +16,7 @@
         z-index: 0;
         width: 100vw;
         height: 100vh;
-        overflow: hidden;
+        overflow: visible;
         @include centering;
         // border: 2px dashed seagreen;
 
@@ -55,18 +55,38 @@
             .overflow-contain {
                 position: absolute;
                 @include maxSize;
+                // z-index: 0;
+                // @include red;
             }
             .clip-top-contain {
                 // border: 2px dashed pink;
-                clip: rect(90px, 100vw, 100vh, 0);
+                clip: rect(90px, 2999px, 100vh, 0);
             }
             .clip-bottom-contain {
                 // border: 2px dashed red;
-                clip: rect(0, 100vw, calc(100vh - 90px), 0);
+                clip: rect(0, 2999px, calc(100vh - 90px), 0);
             }
             .clip-contain {
                 // border: 2px dashed blue;
-                clip: rect(90px, 100vw, calc(100vh - 90px), 0);
+                clip: rect(90px, 2999px, calc(100vh - 90px), 0);
+            }
+            @media screen and (max-width: 768px) {
+                // #home-contain-contain {
+                //     .invisible-screen {
+                .clip-top-contain {
+                    // border: 2px dashed pink;
+                    clip: rect(30px, 2999px, 100vh, 0) !important;
+                }
+                .clip-bottom-contain {
+                    // border: 2px dashed red;
+                    clip: rect(0, 2999px, calc(100vh - 30px), 0) !important;
+                }
+                .clip-contain {
+                    // border: 2px dashed blue;
+                    clip: rect(30px, 2999px, calc(100vh - 30px), 0) !important;
+                }
+                //     }
+                // }
             }
             [class^="page-sub"] {
                 position: absolute;
@@ -118,10 +138,12 @@
     .invisible-screen.based-width {
         width: 100vw;
         height: 100vw / $ratio;
+        border: 2px dashed pink;
     }
 
     .invisible-screen.based-height {
         height: 100vh;
         width: 100vh * $ratio;
+        border: 2px dashed pink;
     }
 }

@@ -1,13 +1,13 @@
 import { useState, useContext, useEffect, useRef, useMemo } from "react";
 import { menuContext } from "../../OtherComponent/menuContext";
 import { ViewConext } from "../../OtherComponent/viewConext";
+import { MediaContext } from "../../OtherComponent/mediaQueryContext";
 import ProgressBar from "../Home/progressBar";
 import DragBar from "./dragBar";
 import ViewPortSize from "../../OtherComponent/myViewportSize";
 import BkPattern, { ScrollMode } from "./bkPattern";
 import OneMenu, { txtDir } from "./oneMenu";
 import WheelHandler, { scrollType } from "../../OtherComponent/wheelHandler";
-// import axios from "axios";
 
 import { AllData } from "./data";
 
@@ -18,37 +18,43 @@ const MenuContain = () => {
         right: "70px",
         top: "70px",
     };
-    const bkRef = useRef<any>({ current: { scrollByAmount: () => {} } });
+
+    const menuRef = useRef<any>(null);
+    const bkRef = useRef<any>(null);
+    const dragRef = useRef<any>(null);
+
     const [Vh, setVh] = useState(0);
+    const [Vw, setVw] = useState(0);
+
+    const { isBigScreen } = useContext(MediaContext);
+    // const isBigScreen = true;
+
     const { setShowBtn } = useContext(menuContext);
     const { setCanChangeView } = useContext(ViewConext);
     const [Expand, setExpand] = useState<boolean>(false);
     const [Above, setAbove] = useState<boolean>(false);
-    // const Dragging = useRef(false);
-    // const [Dragging, setDragging] = useState<boolean>(false);
     const [PageIdx, setPageIdx] = useState<number>(1); // One based
-    const [ScrollPercent, setScrollPercent] = useState(0); // number between 0 ~ 1
+    const scrollPercent = useRef(0);
     const [Mode, setMode] = useState<ScrollMode>(ScrollMode.scroll);
-    // const [AllData, setAllData] = useState<{}[]>([]);
-    const totalPageCount = AllData.length;
 
-    // const Text = {
-    //     type: "cold-press",
-    //     name: "Ultimate Detox",
-    //     price: "7.95",
-    // };
-    // const Description = {
-    //     line1: "Made with 100% organic ingredients",
-    //     line2: "apple, lemon, celery, parsley, spinach, kale, ginger & nothing else",
-    //     line3: `Per 100ml Energy 174kj (41kal) -
-    //     Fat 0.0 of which saturated 0.0 -
-    //     Carbohydrates 9.3g of which sugar 9.3g -
-    //     Fiber 1.0g - Protein 0.3g - Salt 0.03g`,
-    // };
+    const totalPageCount = AllData.length;
 
     const styleTopTransTotalPx = useMemo(() => {
         return Math.round((totalPageCount - 1) * Vh);
     }, [Vh]);
+
+    const totalBkScrollPx = useMemo(() => {
+        const scrollRatio = 0.3;
+        return Math.round((totalPageCount - 1) * Vh * scrollRatio);
+    }, [Vh]);
+
+    const draggableWidth = useRef(0);
+
+    // useEffect(() => {
+    //     console.log("isBigScreen trigger in Menu", isBigScreen);
+    //     menuRef.current.style.setProperty("--big-screen", isBigScreen ? 1 : 0);
+    // }, [isBigScreen]);
+    // console.log("isBigScreen: ", isBigScreen);
 
     // type oneMenu = {
     //     img: string;
@@ -116,7 +122,7 @@ const MenuContain = () => {
     const setPercentByPage = (pi: number) => {
         let k = (pi - 1) / (totalPageCount - 1);
         // console.log("new per: ", pi, k);
-        setScrollPercent(k);
+        scrollPercent.current = k;
         return k;
     };
 
@@ -149,82 +155,96 @@ const MenuContain = () => {
             return { transform: `translateY(${toPx}px)` };
         }
         if (Mode == ScrollMode.drag) {
-            let styleTopTransTotalPx = (totalPageCount - 1) * Vh;
-            let toPx = -styleTopTransTotalPx * ScrollPercent; // 因为只有 19 个页面的长度是 scrollable
-            return { transform: `translateY(${toPx}px)` };
+            return {};
         }
         console.log("Err. cannnot get here");
     }
+
+    function getContain4Class() {
+        let s = Mode == ScrollMode.drag ? "drag" : "";
+        return "menu-contain-4 " + s;
+    }
+
+    function setRefPercent(percent: number) {
+        // return { transform: `translateY(${toPx}px)` };
+        let contain4Px = -styleTopTransTotalPx * percent;
+        // console.log("styleTopTransTotalPx: ", styleTopTransTotalPx, percent);
+
+        // return { backgroundPosition: `0px ${BkPosition}px` };
+        let bkPx = -totalBkScrollPx * percent;
+        bkPx = Math.floor(bkPx);
+
+        // return { left: `${pos}px` };
+        let dragPx = Math.round(draggableWidth.current * percent); // left px
+        // console.log("contain4Px: ", contain4Px, bkPx, dragPx);
+
+        menuRef.current.style.setProperty(
+            "--contain4-px",
+            ` translateY(${contain4Px}px)`
+        );
+        bkRef.current.style.setProperty("--bk-px", `0px ${bkPx}px`);
+        dragRef.current.style.setProperty("--drag-px", `${dragPx}px`);
+    }
+
     return (
         <>
-            <div id="menu-contain-1" className={getClass2()}>
+            <div id="menu-contain-1" className={getClass2()} ref={menuRef}>
                 {/* <div className="mid-line"></div> */}
 
                 <div className="overflow-contain">
-                    <DragBar
-                        {...{
-                            Mode,
-                            setMode,
-                            PageIdx,
-                            setPageIdx,
-                            ScrollPercent,
-                            setScrollPercent,
-                            setPercentByPage,
-                            setPageByPercent,
-                            totalPageCount,
-                            Expand,
-                        }}
-                    />
+                    {isBigScreen && (
+                        <DragBar
+                            {...{
+                                Mode,
+                                setMode,
+                                PageIdx,
+                                setPageIdx,
+                                scrollPercent,
+                                setPercentByPage,
+                                setPageByPercent,
+                                totalPageCount,
+                                Expand,
+                                draggableWidth,
+                                setRefPercent,
+                                dragRef,
+                                Vw,
+                            }}
+                        />
+                    )}
                 </div>
                 <div id="menu-contain-2" className={getClass1()}>
                     <BkPattern
-                        ref={bkRef}
-                        {...{ PageIdx, ScrollPercent, Mode, totalPageCount }}
+                        {...{
+                            PageIdx,
+                            bkRef,
+                            Mode,
+                            totalPageCount,
+                            totalBkScrollPx,
+                        }}
                     />
 
                     <div className="menu-contain-3">
-                        {/* /// */}
-                        <ProgressBar
-                            PageIdx={PageIdx}
-                            totalPageCount={totalPageCount}
-                            Show={!Above}
-                        />
+                        {isBigScreen && (
+                            <ProgressBar
+                                PageIdx={PageIdx}
+                                totalPageCount={totalPageCount}
+                                Show={!Above}
+                            />
+                        )}
                         <div
-                            className="menu-contain-4"
+                            className={getContain4Class()}
                             style={getContain4Sty()}
                         >
                             {renderAllMenu()}
-                            {/* <OneMenu
-                                {...{
-                                    Expand,
-                                    shouldExpand,
-                                    expandMenu,
-                                    shrinkMenu,
-                                    btn2Sty,
-                                }}
-                                dir={txtDir.left}
-                            />
-                            <OneMenu
-                                {...{
-                                    Expand,
-                                    shouldExpand,
-                                    expandMenu,
-                                    shrinkMenu,
-                                    btn2Sty,
-                                }}
-                                dir={txtDir.right}
-                            /> */}
-
-                            {/* /// */}
                         </div>
                     </div>
                 </div>
             </div>
 
-            <ViewPortSize {...{ setVh }} />
+            <ViewPortSize {...{ setVh, setVw }} />
             <WheelHandler
                 actionFun={flipPage}
-                deps={[PageIdx, ScrollPercent]}
+                deps={PageIdx}
                 scrollBetweenDelay={680}
             />
         </>

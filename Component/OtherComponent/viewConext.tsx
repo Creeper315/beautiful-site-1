@@ -17,8 +17,12 @@ const ViewProvider: NextPage<any> = (props) => {
     const router = useRouter();
     // const canChangeView = useRef<boolean>(false);
     const [CanChangeView, setCanChangeView] = useState<boolean>(false);
+    const [MenuLogoState, setMenuLogoState] = useState<
+        "none" | "menu" | "logo"
+    >("logo");
 
     function onChangeView(v: ViewEnum) {
+        console.log("at on change view,", CanChangeView);
         if (v == router.pathname || !CanChangeView) return;
         setTimeout(() => {
             router.replace({ pathname: v });
@@ -35,11 +39,12 @@ const ViewProvider: NextPage<any> = (props) => {
     return (
         <ViewConext.Provider
             value={{
-                // CurrentView,
                 onChangeView,
                 CanChangeView,
                 setCanChangeView,
                 Load,
+                MenuLogoState,
+                setMenuLogoState,
             }}
         >
             {props.children}

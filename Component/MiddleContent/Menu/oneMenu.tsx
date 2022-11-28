@@ -1,6 +1,8 @@
 import DiamondBtn from "../../OtherComponent/diamondBtn";
 import { NextPage } from "next";
 import { dataType } from "./data";
+import { useContext } from "react";
+import { MediaContext } from "../../OtherComponent/mediaQueryContext";
 
 export enum txtDir {
     left = "txtLeft",
@@ -34,6 +36,8 @@ const OneMenu: NextPage<prop> = ({
     Dir,
     Idx,
 }) => {
+    const { isBigScreen } = useContext(MediaContext);
+
     function getClass1() {
         if (shouldExpand()) return " expand";
         return "";
@@ -49,7 +53,9 @@ const OneMenu: NextPage<prop> = ({
     return (
         <div className="one-menu">
             <div className={`bg-img ${getClass1()} ${Dir}`}>
-                <img src={MenuData.bk} alt="img" className="pattern" />
+                {isBigScreen ? (
+                    <img src={MenuData.bk} alt="img" className="pattern" />
+                ) : null}
                 <img src={MenuData.img} alt="img" className="bottle" />
             </div>
 
