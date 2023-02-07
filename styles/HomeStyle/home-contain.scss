@@ -138,12 +138,12 @@
     .invisible-screen.based-width {
         width: 100vw;
         height: 100vw / $ratio;
-        border: 2px dashed pink;
+        // border: 2px dashed pink;
     }
 
     .invisible-screen.based-height {
         height: 100vh;
         width: 100vh * $ratio;
-        border: 2px dashed pink;
+        // border: 2px dashed pink;
     }
 }
