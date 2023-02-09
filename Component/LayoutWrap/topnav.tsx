@@ -3,7 +3,8 @@ import { ViewConext, ViewEnum } from "../OtherComponent/viewConext";
 import { MediaContext } from "../OtherComponent/mediaQueryContext";
 import { useRouter } from "next/router";
 import ViewPortSize from "../OtherComponent/myViewportSize";
-
+import { Tooltip, tooltipClasses } from "@mui/material";
+console.log("toooo", tooltipClasses.tooltip);
 const TopNav = () => {
     // height, flex, center, gap,
     // font color
@@ -77,11 +78,6 @@ const TopNav = () => {
                     <div
                         className={getClass()}
                         ref={btn1}
-                        // className="border border-primary mx-4 _centering _font _themeTxt "
-                        // style={{ zIndex: 2, height: "75%" }}
-                        // onMouseEnter={() => {
-                        //     setHoverOn(ViewEnum.home);
-                        // }}
                         onMouseLeave={() => {
                             setHoverOn(null);
                         }}
@@ -117,33 +113,38 @@ const TopNav = () => {
                     >
                         Order Now
                     </div>
+                    <Tooltip title="未完待续🚫" arrow>
+                        <div
+                            className={getClass()}
+                            ref={btn4}
+                            // onMouseEnter={() => {
+                            //     setHoverOn(ViewEnum.about);
+                            // }}
+                            onMouseLeave={() => {
+                                setHoverOn(null);
+                            }}
+                            // className="mx-4 _centering border _font _themeTxt"
+                        >
+                            About
+                        </div>
+                    </Tooltip>
 
-                    <div
-                        className={getClass()}
-                        ref={btn4}
-                        // onMouseEnter={() => {
-                        //     setHoverOn(ViewEnum.about);
-                        // }}
-                        onMouseLeave={() => {
-                            setHoverOn(null);
-                        }}
-                        // className="mx-4 _centering border _font _themeTxt"
-                    >
-                        About
-                    </div>
-                    <div
-                        className={getClass()}
-                        ref={btn5}
-                        // onMouseEnter={() => {
-                        //     setHoverOn(ViewEnum.contact);
-                        // }}
-                        onMouseLeave={() => {
-                            setHoverOn(null);
-                        }}
-                        // className="mx-4 _centering border _font _themeTxt"
-                    >
-                        Contact
-                    </div>
+                    <Tooltip title="未完待续🚫" arrow>
+                        <div
+                            className={getClass()}
+                            ref={btn5}
+                            // onMouseEnter={() => {
+                            //     setHoverOn(ViewEnum.contact);
+                            // }}
+                            onMouseLeave={() => {
+                                setHoverOn(null);
+                            }}
+                            // className="mx-4 _centering border _font _themeTxt"
+                        >
+                            Contact
+                        </div>
+                    </Tooltip>
+
                     <ViewPortSize setVw={setVw} />
                 </div>
             )}

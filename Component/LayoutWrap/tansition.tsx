@@ -3,8 +3,7 @@ import Logo from "./logo";
 import { ViewEnum, ViewConext } from "../OtherComponent/viewConext";
 import { menuContext } from "../OtherComponent/menuContext";
 import { MediaContext } from "../OtherComponent/mediaQueryContext";
-import { Badge } from "@mui/material";
-import { green } from "@mui/material/colors";
+import { Tooltip } from "@mui/material";
 import SC, { css } from "styled-components";
 
 // const Thing = SC.div.attrs((/* props */) => ({ tabIndex: 0 }))`
@@ -297,21 +296,23 @@ const Transition = () => {
             </div>
 
             {/* ↓ 右边的 button */}
-            <div id="btn-right" className="pop0" ref={right}>
-                <button
-                    className={`hamburger hamburger--slider position-absolute bottom-0 start-50 translate-middle-x`}
-                    style={{ height: "95%", outline: "none" }}
-                    type="button"
-                    ref={br}
-                    onMouseEnter={() => toggleBtnLabel(true)}
-                    onMouseLeave={() => toggleBtnLabel(false)}
-                    // onClick={() => setMenuLogoState("logo")}
-                >
-                    <span className=" hamburger-box">
-                        <span className="hamburger-inner"></span>
-                    </span>
-                </button>
-            </div>
+            <Tooltip title="未完待续🚫" arrow>
+                <div id="btn-right" className="pop0" ref={right}>
+                    <button
+                        className={`hamburger hamburger--slider position-absolute bottom-0 start-50 translate-middle-x`}
+                        style={{ height: "95%", outline: "none" }}
+                        type="button"
+                        ref={br}
+                        onMouseEnter={() => toggleBtnLabel(true)}
+                        onMouseLeave={() => toggleBtnLabel(false)}
+                        // onClick={() => setMenuLogoState("logo")}
+                    >
+                        <span className=" hamburger-box">
+                            <span className="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </Tooltip>
         </>
     );
 };

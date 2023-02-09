@@ -27,7 +27,6 @@ const MenuContain = () => {
     const [Vw, setVw] = useState(0);
 
     const { isBigScreen } = useContext(MediaContext);
-    // const isBigScreen = true;
 
     const { setShowBtn } = useContext(menuContext);
     const { setCanChangeView } = useContext(ViewConext);
@@ -49,29 +48,6 @@ const MenuContain = () => {
     }, [Vh]);
 
     const draggableWidth = useRef(0);
-
-    // useEffect(() => {
-    //     console.log("isBigScreen trigger in Menu", isBigScreen);
-    //     menuRef.current.style.setProperty("--big-screen", isBigScreen ? 1 : 0);
-    // }, [isBigScreen]);
-    // console.log("isBigScreen: ", isBigScreen);
-
-    // type oneMenu = {
-    //     img: string;
-    //     bkImg: string;
-    // };
-
-    // useEffect(() => {
-    //     axios
-    //         .get("http://localhost:3000/api/menu", {
-    //             params: {
-    //                 test: "uiuiu",
-    //             },
-    //         })
-    //         .then(({ data }: { data: oneMenu[] }) => {
-    //             setAllData(data);
-    //         });
-    // }, []);
 
     function renderAllMenu() {
         let bool = true;
@@ -150,7 +126,7 @@ const MenuContain = () => {
     function getContain4Sty() {
         if (Vh == 0 || styleTopTransTotalPx == undefined)
             return { transform: "translateY(0)" };
-        if (Mode == ScrollMode.scroll) {
+        if (Mode == ScrollMode.scroll || Mode == ScrollMode.beforeDrag) {
             let toPx = -(PageIdx - 1) * Vh;
             return { transform: `translateY(${toPx}px)` };
         }

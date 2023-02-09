@@ -19,6 +19,7 @@ const DragBar: NextPage<any> = ({
     dragRef,
     Vw,
 }) => {
+    // console.log("drag re re", Mode);
     const dragBtnWidth = 200;
     const expandedPadding = 25; // This is default, and is used in .css files as well. (variable.scss)
     const mouseStartX = useRef(expandedPadding);
@@ -52,7 +53,7 @@ const DragBar: NextPage<any> = ({
         if (draggerContainDiv.current == null) return {}; // 这种情况就用 css 里面的 default style
         // console.log("in drag! ", Mode, PageIdx, ScrollPercent);
 
-        if (Mode == ScrollMode.scroll) {
+        if (Mode == ScrollMode.scroll || Mode == ScrollMode.beforeDrag) {
             let interval = draggableWidth.current / (totalPageCount - 1);
             // console.log("interval: ", draggableWidthPx, totalPageCount);
             let pos = (PageIdx - 1) * interval;
@@ -74,11 +75,13 @@ const DragBar: NextPage<any> = ({
 
     const handleDown = (e: any) => {
         // console.log("Down", ScrollPercent);
-        setMode(ScrollMode.drag);
+        setMode(ScrollMode.beforeDrag);
         lastPercent.current = scrollPercent.current;
 
         mouseStartX.current = e.clientX;
         draggerStartX.current = dragRef.current.getBoundingClientRect().x;
+
+        // if (draggerContainDiv.current == null) return;
     };
 
     const handleUp = (e: any) => {
@@ -93,6 +96,7 @@ const DragBar: NextPage<any> = ({
     const handleDrag = (e: any) => {
         // console.log("!", Mode);
         if (Mode == ScrollMode.scroll) return;
+        if (Mode == ScrollMode.beforeDrag) setMode(ScrollMode.drag);
 
         if (draggerContainDiv.current == null) return;
         let mx = e.clientX;

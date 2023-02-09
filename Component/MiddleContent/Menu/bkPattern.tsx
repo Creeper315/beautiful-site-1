@@ -5,6 +5,7 @@ import ViewPortSize from "../../OtherComponent/myViewportSize";
 export enum ScrollMode {
     scroll = "scroll",
     drag = "drag",
+    beforeDrag = "beforeDrag", // 当鼠标点击到 滑块 的时候，进入 beforeDrag 的 state。
 }
 type prop = {
     PageIdx: number;
