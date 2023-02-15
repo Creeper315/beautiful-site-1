@@ -4,7 +4,7 @@ import { MediaContext } from "../OtherComponent/mediaQueryContext";
 import { useRouter } from "next/router";
 import ViewPortSize from "../OtherComponent/myViewportSize";
 import { Tooltip, tooltipClasses } from "@mui/material";
-console.log("toooo", tooltipClasses.tooltip);
+
 const TopNav = () => {
     // height, flex, center, gap,
     // font color
